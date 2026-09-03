@@ -11,7 +11,7 @@
 | **Role** | Web Development / AI Intern |
 | **Organization** | InAmigos Foundation |
 | **Task Title** | Assessment – Task 1: Personal Profile Website (AI Based) |
-| **Submission Deadline** | 5th September 2026 | 7:00 PM |
+| **Submission Deadline** | 5th September 2026 \| 7:00 PM |
 | **Format** | Live Website Link & Documentation Package |
 | **Primary Contact** | saradhoundiyal296@gmail.com |
 | **Location** | Delhi, India |
@@ -27,8 +27,7 @@
   👉 **https://github.com/Sasha-Mx/Portfolio**
 
 * **💼 Published LinkedIn Post Link**:  
-  👉 **[ PASTE YOUR PUBLISHED LINKEDIN POST LINK HERE ]**  
-  *(e.g., https://www.linkedin.com/posts/sara-dhoundiyal_inamigosfoundation-...)*
+  👉 **https://lnkd.in/p/gkCRP8wX**
 
 ---
 
@@ -56,22 +55,7 @@
 
 ### 📱 LinkedIn Submission & Social Sharing Proof
 
-> **Assessment Instruction**: *"Share your website on LinkedIn or any social media platform (Tag InAmigos Foundation & take a screenshot). Keep all related files, links, and screenshots saved in your Drive."*
+* **Published Post URL**: [https://lnkd.in/p/gkCRP8wX](https://lnkd.in/p/gkCRP8wX)  
+* **Tagged Organization**: @InAmigos Foundation (IAF)
 
-#### LinkedIn Post Link:
-`[ PASTE YOUR PUBLISHED LINKEDIN POST LINK HERE ]`
-
-#### Screenshot of Published LinkedIn Post (Tagging @InAmigos Foundation):
-
-```
-+-----------------------------------------------------------------------+
-|                                                                       |
-|   [ 📸 PASTE / INSERT SCREENSHOT OF YOUR PUBLISHED LINKEDIN POST HERE ] |
-|                                                                       |
-|   Make sure the screenshot clearly shows:                             |
-|   1. Your post text and live portfolio link (https://portfolio-dg92.vercel.app/) |
-|   2. The @InAmigos Foundation tag                                     |
-|   3. Your attached gamified portrait / website screenshot             |
-|                                                                       |
-+-----------------------------------------------------------------------+
-```
+![LinkedIn Post Submission Proof](screenshots/07_linkedin_post_proof.png)

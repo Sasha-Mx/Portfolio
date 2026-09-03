@@ -30,24 +30,23 @@
     .link-box { background: #f8fafc; border: 1px dashed #6366f1; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
     .link-box a { color: #4f46e5; font-weight: 600; text-decoration: none; word-break: break-all; font-size: 1.05rem; }
     .link-box a:hover { text-decoration: underline; }
-    .placeholder-box {
-      border: 2px dashed #94a3b8;
-      background: #f8fafc;
-      border-radius: 8px;
-      padding: 30px;
-      text-align: center;
-      color: #64748b;
-      margin: 20px 0;
-      font-size: 0.95rem;
-    }
     img.preview {
       width: 100%;
-      max-height: 480px;
+      max-height: 520px;
       object-fit: contain;
       border: 1px solid #cbd5e1;
       border-radius: 8px;
       margin: 8px 0 20px 0;
       background: #090514;
+    }
+    img.linkedin-proof {
+      width: 100%;
+      max-width: 580px;
+      border: 2px solid #6366f1;
+      border-radius: 10px;
+      margin: 14px 0 20px 0;
+      display: block;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.15);
     }
     img.avatar-preview {
       width: 200px;
@@ -68,11 +67,20 @@
       margin-bottom: 24px;
       font-size: 0.9rem;
     }
+    .proof-note {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      color: #166534;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      margin: 12px 0;
+    }
   </style>
 </head>
 <body>
   <div class="print-tip">
-    💡 <b>Tip</b>: Press <b>Ctrl + P</b> in your browser and choose <b>"Save as PDF"</b> to generate an official submission PDF to upload to your InAmigos Google Drive folder!
+    💡 <b>Tip</b>: Press <b>Ctrl + P</b> in your browser and choose <b>"Save as PDF"</b> to generate your complete, ready-to-upload submission PDF!
   </div>
 
   <div class="doc-card">
@@ -101,7 +109,7 @@
     </div>
     <div class="link-box">
       <b>💼 Published LinkedIn Post Link:</b><br>
-      <i>[👉 Paste your published LinkedIn post URL here 👈]</i>
+      <a href="https://lnkd.in/p/gkCRP8wX" target="_blank">https://lnkd.in/p/gkCRP8wX</a>
     </div>
 
     <h3>📸 Portfolio Application Screenshots</h3>
@@ -124,16 +132,11 @@
     <h4>6. Sara Dhoundiyal — Animated Gamified Character Avatar</h4>
     <img src="screenshots/06_sara_gamified_avatar.jpg" class="avatar-preview" alt="Sara Animated Gamified Avatar">
 
-    <h3>📱 LinkedIn Submission Proof</h3>
-    <p><i>Assessment Instruction: "Share your website on LinkedIn or any social media platform (Tag InAmigos Foundation & take a screenshot)."</i></p>
-
-    <div class="placeholder-box">
-      <b>[ 📸 PASTE / INSERT SCREENSHOT OF YOUR PUBLISHED LINKEDIN POST HERE ]</b><br><br>
-      Ensure the screenshot clearly shows:<br>
-      1. Your post text and live portfolio link (<b>https://portfolio-dg92.vercel.app/</b>)<br>
-      2. The <b>@InAmigos Foundation</b> tag<br>
-      3. Your attached gamified portrait / website screenshot
+    <h3>📱 LinkedIn Submission & Social Sharing Proof</h3>
+    <div class="proof-note">
+      ✅ <b>Published & Verified on LinkedIn</b>: Tagged <b>@InAmigos Foundation (IAF)</b> with live website link and interactive project showcase.
     </div>
+    <img src="screenshots/07_linkedin_post_proof.png" class="linkedin-proof" alt="LinkedIn Post Proof">
   </div>
 </body>
 </html>
