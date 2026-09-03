@@ -1,0 +1,19 @@
+{
+  "name": "sara-portfolio",
+  "version": "1.0.0",
+  "description": "Sara Dhoundiyal - 2026 Gamified Retro 8-Bit Nintendo 3DS Portfolio Website",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "serve": "npx serve -l 8080 ."
+  },
+  "keywords": [
+    "portfolio",
+    "retro",
+    "8bit",
+    "nintendo-3ds",
+    "web-developer"
+  ],
+  "author": "Sara Dhoundiyal",
+  "license": "MIT"
+}

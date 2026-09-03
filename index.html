@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sara Dhoundiyal | 2026 Retro 8-Bit Portfolio 🎮</title>
+  <meta name="description" content="Gamified retro 8-bit personal profile & portfolio website of Sara Dhoundiyal - B.Tech IT, AI/ML & Full Stack Developer. Built with Nintendo 3DS aesthetic, 3D project slider & chiptune sound effects.">
+  <meta name="author" content="Sara Dhoundiyal">
+  <meta name="theme-color" content="#130f26">
+
+  <!-- Google Fonts: Retro Gaming & Pixel Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+</head>
+<body class="crt-enabled">
+
+  <!-- CRT Scanline Screen Overlay -->
+  <div class="crt-overlay" id="crtOverlay" aria-hidden="true"></div>
+
+  <!-- Audio Unlock Overlay Notice (Disappears on first click) -->
+  <div id="audioNotice" class="audio-notice">
+    <span>PRESS ANY BUTTON OR [START] TO INITIALIZE 8-BIT AUDIO</span>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- TOP GAMING HUD (Heads Up Display)                          -->
+  <!-- ========================================================= -->
+  <header class="hud-header" id="topHud">
+    <div class="hud-left">
+      <div class="hud-badge xp-badge">
+        <span class="hud-icon">⚡</span>
+        <span class="hud-text">XP: WEB DEV LVL 03</span>
+      </div>
+      <div class="hud-badge cgpa-badge">
+        <span class="hud-icon">⭐</span>
+        <span class="hud-text">CGPA: 9.18</span>
+      </div>
+    </div>
+
+    <div class="hud-center">
+      <div class="pixel-clouds-container left-clouds">
+        <div class="pixel-cloud cloud-1"></div>
+      </div>
+      <div class="hud-title-mini">★ SARA.EXE ★</div>
+      <div class="pixel-clouds-container right-clouds">
+        <div class="pixel-cloud cloud-2"></div>
+      </div>
+    </div>
+
+    <div class="hud-right">
+      <div class="hud-badge health-badge">
+        <span class="heart-icon">♥</span>
+        <div class="health-bar" title="Full Health">
+          <div class="health-fill"></div>
+        </div>
+        <span class="player-tag">PLAYER 01</span>
+      </div>
+
+      <!-- Control Badges -->
+      <button class="hud-btn" id="sfxToggleBtn" title="Toggle 8-bit Sound FX">
+        <span id="sfxIcon">🔊</span> SFX: <span id="sfxStatus">ON</span>
+      </button>
+      <button class="hud-btn" id="crtToggleBtn" title="Toggle CRT Scanline Effect">
+        📺 CRT: <span id="crtStatus">ON</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================= -->
+    <!-- HERO SECTION: 2026 PORTFOLIO TITLE SCREEN                 -->
+    <!-- ========================================================= -->
+    <section class="hero-screen" id="heroSection">
+      <!-- Gamified Vanta.js Atmospheric Layers -->
+      <canvas id="vantaAtmosphereCanvas" class="vanta-atmosphere-canvas" title="Vanta Atmospheric Canvas (Birds & Halo)"></canvas>
+      <div class="vanta-halo-aura" id="vantaHalo">
+        <div class="halo-core-glow"></div>
+        <div class="halo-ring ring-1"></div>
+        <div class="halo-ring ring-2"></div>
+        <div class="halo-ring ring-3"></div>
+        <div class="halo-pulser"></div>
+      </div>
+      <div class="vanta-fog-container" id="vantaFog">
+        <div class="fog-wave fog-back"></div>
+        <div class="fog-wave fog-mid"></div>
+        <div class="fog-wave fog-front"></div>
+      </div>
+
+      <!-- Floating Stars Background -->
+      <div class="pixel-stars-bg" id="starsBg"></div>
+
+      <div class="hero-content">
+        <div class="year-badge">2026</div>
+        <h1 class="main-title">
+          <span class="title-glow">PORTFOLIO</span>
+        </h1>
+        <p class="hero-subtitle">SARA DHOUNDIYAL • WEB DEVELOPER</p>
+
+        <!-- Vanta Atmosphere Mini-Controller -->
+        <div class="vanta-fx-bar">
+          <span class="vanta-bar-label">ATMOSPHERE FX:</span>
+          <button class="vanta-chip active sound-trigger" data-sound="bleep" id="toggleBirdsBtn">🕊️ BIRDS: ON</button>
+          <button class="vanta-chip active sound-trigger" data-sound="bleep" id="toggleFogBtn">🌫️ FOG: ON</button>
+          <button class="vanta-chip active sound-trigger" data-sound="bleep" id="toggleHaloBtn">💫 HALO: ON</button>
+        </div>
+        <div class="hero-actions">
+          <button class="pixel-btn start-btn sound-trigger" data-sound="powerup" id="startMiniGameBtn">
+            <span class="btn-border"></span>
+            <span class="btn-text">🎮 PLAY: SARA CHASING MEOW</span>
+          </button>
+          <a href="#worldMapSection" class="pixel-btn secondary-btn" id="worldMapHeroBtn">
+            <span class="btn-border"></span>
+            <span class="btn-text">🗺️ WORLD MAP</span>
+          </a>
+          <a href="#missionsSection" class="pixel-btn secondary-btn" id="missionsBtn">
+            <span class="btn-border"></span>
+            <span class="btn-text">📜 MISSIONS</span>
+          </a>
+          <a href="#contactSection" class="pixel-btn secondary-btn" id="contactHeroBtn">
+            <span class="btn-border"></span>
+            <span class="btn-text">📡 TRANSMIT</span>
+          </a>
+        </div>
+
+        <!-- Hero Pixel Diorama Stage -->
+        <div class="hero-diorama">
+          <!-- Pixel Street Lamp -->
+          <div class="diorama-element lamp-post">
+            <div class="lamp-light"></div>
+            <div class="lamp-pole"></div>
+          </div>
+
+          <!-- Pixel Character Sprite (Sara) -->
+          <div class="diorama-element player-sprite" id="heroAvatar">
+            <img src="assets/hero_avatar_pixel.jpg" alt="Sara Dhoundiyal Pixel Character" class="pixel-img avatar-img">
+            <div class="sprite-shadow"></div>
+            <div class="speech-bubble">Hello World! ✨</div>
+          </div>
+
+          <!-- Pixel Companion Cat -->
+          <div class="diorama-element pet-sprite">
+            <img src="assets/cat.jpg" alt="Pixel Familiar Companion Cat" class="pixel-img cat-img">
+            <div class="sprite-shadow"></div>
+            <div class="pet-bubble">Meow!</div>
+          </div>
+
+          <!-- Pixel Cherry Tree -->
+          <div class="diorama-element pixel-tree">
+            <div class="tree-foliage"></div>
+            <div class="tree-trunk"></div>
+          </div>
+        </div>
+
+        <!-- Checkerboard Grass Platform -->
+        <div class="diorama-ground"></div>
+      </div>
+    </section>
+
+    <!-- MARQUEE RIBBON 1 -->
+    <div class="marquee-ribbon purple-ribbon">
+      <div class="marquee-track">
+        <span>★ LEVEL 01: ABOUT SARA ★ B.TECH IT (CGPA 9.18 / 10) ★ AI WEB DEV @ INAMIGOS FOUNDATION ★ FULL STACK DEV @ ODYMAX ★ DATA ANALYTICS @ TATA ★ LEVEL 01: ABOUT SARA ★ B.TECH IT (CGPA 9.18 / 10) ★ AI WEB DEV @ INAMIGOS FOUNDATION ★ FULL STACK DEV @ ODYMAX ★ DATA ANALYTICS @ TATA ★</span>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SARA'S WORLD MAP (Reference 1: 16-Bit RPG Overworld)      -->
+    <!-- ========================================================= -->
+    <section class="world-map-section" id="worldMapSection">
+      <div class="wooden-frame">
+        <div class="map-top-banner">
+          <span class="banner-star">★</span>
+          <span class="banner-title">SARA'S WORLD MAP</span>
+          <span class="banner-star">★</span>
+        </div>
+
+        <div class="map-container">
+          <img src="assets/world_map.jpg" alt="Sara's RPG Overworld Realm Map" class="world-map-img">
+
+          <!-- Top-Left Player Status Box -->
+          <div class="map-player-hud">
+            <img src="assets/avatar.jpg" alt="Sara Portrait" class="map-hud-avatar">
+            <div class="map-hud-stats">
+              <div class="hud-stat-name">NAME: SARA</div>
+              <div class="hud-stat-lvl">LV 03 • WEB DEVELOPER</div>
+              <div class="hud-stat-hp">HP: <span class="hp-hearts">♥♥♥♥♥</span></div>
+            </div>
+          </div>
+
+          <!-- Interactive Map Signpost Pins -->
+          <!-- 1. Village Cottages -> About Sara -->
+          <a href="#level01" class="map-pin pin-cottage sound-trigger" data-sound="bleep" style="top: 52%; left: 24%;" title="Player Residence">
+            <span class="pin-sign">🏡 ABOUT ME</span>
+            <span class="pin-pulse"></span>
+          </a>
+
+          <!-- 2. Wizard Stone Tower -> Weapons & Skills -->
+          <a href="#windowSkills" class="map-pin pin-tower sound-trigger" data-sound="bleep" style="top: 32%; left: 33%;" title="Skills & Arcana Tower">
+            <span class="pin-sign">🔮 SKILLS</span>
+            <span class="pin-pulse"></span>
+          </a>
+
+          <!-- 3. Windmill / Forge -> 3D Missions -->
+          <a href="#missionsSection" class="map-pin pin-windmill sound-trigger" data-sound="bleep" style="top: 14%; left: 52%;" title="Projects & Missions Workshop">
+            <span class="pin-sign">🌾 PROJECTS</span>
+            <span class="pin-pulse"></span>
+          </a>
+
+          <!-- 4. Coastal Lighthouse -> Contact & Transmit -->
+          <a href="#contactSection" class="map-pin pin-lighthouse sound-trigger" data-sound="bleep" style="top: 72%; left: 84%;" title="Coastal Signal Lighthouse">
+            <span class="pin-sign">🗼 CONTACT</span>
+            <span class="pin-pulse"></span>
+          </a>
+
+          <!-- 5. Secret Boss Cave -> Easter Egg -->
+          <button class="map-pin pin-cave sound-trigger" data-sound="powerup" id="secretCaveBtn" style="top: 14%; left: 87%;" title="Enter Secret Cave">
+            <span class="pin-sign">🗝️ SECRET CAVE</span>
+            <span class="pin-pulse"></span>
+          </button>
+
+          <!-- Bottom-Left Mini-Map Box -->
+          <div class="mini-map-box">
+            <div class="mini-map-radar"></div>
+            <span class="mini-map-label">RADAR: 05 REALMS</span>
+          </div>
+
+          <!-- Bottom-Right RPG Action Menu -->
+          <div class="rpg-action-menu">
+            <a href="#level01" class="rpg-menu-item active sound-trigger" data-sound="bleep">► ABOUT</a>
+            <a href="#windowSkills" class="rpg-menu-item sound-trigger" data-sound="bleep">&nbsp; SKILLS</a>
+            <a href="#missionsSection" class="rpg-menu-item sound-trigger" data-sound="bleep">&nbsp; PROJECTS</a>
+            <a href="#contactSection" class="rpg-menu-item sound-trigger" data-sound="bleep">&nbsp; CONTACT</a>
+            <div class="rpg-menu-arrows">
+              <span class="rpg-arr">◀</span>
+              <span class="rpg-arr">▶</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-footer-hint">
+          <span>🗺️ CLICK ANY SIGNPOST TO FAST-TRAVEL ACROSS SARA'S REALM</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- LEVEL 01: MEET THE PLAYER & ARCADE CHARACTER SELECT       -->
+    <!-- ========================================================= -->
+    <section class="level-section" id="level01">
+      <div class="section-header">
+        <div class="level-badge">Level 01</div>
+        <h2 class="section-title">Meet the player</h2>
+        <div class="player-name-glitch">Sara Dhoundiyal</div>
+        <p class="section-desc">GGSIPU IT Undergrad • AI/ML Engineer • Full-Stack Craftswoman</p>
+      </div>
+
+      <!-- ARCADE CHARACTER SELECT CABINET (Reference 2) -->
+      <div class="arcade-select-cabinet" id="devSelectCabinet">
+        <div class="arcade-crt-bezel">
+          <div class="arcade-top-hud">
+            <div class="coin-credits">
+              <span class="arcade-coin">🪙</span>
+              <span>CREDITS: 04</span>
+            </div>
+            <h3 class="arcade-headline">CHOOSE YOUR DEVELOPER!</h3>
+            <div class="arcade-player-tag">P1 READY</div>
+          </div>
+
+          <div class="arcade-select-grid-container">
+            <!-- Left Grid: Selectable Developer Specializations -->
+            <div class="dev-cards-grid">
+              <!-- Spec 1: AI / ML Specialist -->
+              <div class="dev-spec-card active sound-trigger" data-sound="bleep" data-spec="aiml">
+                <div class="p1-marker">P1</div>
+                <div class="spec-icon">🤖</div>
+                <div class="spec-name">AI / ML BOT</div>
+                <div class="spec-tag">PYTHON • TENSORFLOW</div>
+              </div>
+
+              <!-- Spec 2: Full Stack Web -->
+              <div class="dev-spec-card sound-trigger" data-sound="bleep" data-spec="fullstack">
+                <div class="p1-marker">P1</div>
+                <div class="spec-icon">💻</div>
+                <div class="spec-name">WEBSITE BUILD</div>
+                <div class="spec-tag">REACT • NODE • VITE</div>
+              </div>
+
+              <!-- Spec 3: Smart Transit Companion -->
+              <div class="dev-spec-card sound-trigger" data-sound="bleep" data-spec="transit">
+                <div class="p1-marker">P1</div>
+                <div class="spec-icon">📱</div>
+                <div class="spec-name">MOBILE TRANSIT</div>
+                <div class="spec-tag">ROUTEIQ • LEAFLET</div>
+              </div>
+
+              <!-- Spec 4: FinTech Intelligence -->
+              <div class="dev-spec-card sound-trigger" data-sound="bleep" data-spec="fintech">
+                <div class="p1-marker">P1</div>
+                <div class="spec-icon">📈</div>
+                <div class="spec-name">FINTECH AI</div>
+                <div class="spec-tag">ET PULSE • ARTHSAHAY</div>
+              </div>
+
+              <!-- Spec 5: UI/UX & Motion -->
+              <div class="dev-spec-card sound-trigger" data-sound="bleep" data-spec="uiux">
+                <div class="p1-marker">P1</div>
+                <div class="spec-icon">🎨</div>
+                <div class="spec-name">UI/UX MOTION</div>
+                <div class="spec-tag">FRAMER • PROTOTYPE</div>
+              </div>
+
+              <!-- Spec 6: Hackathon Gladiator -->
+              <div class="dev-spec-card sound-trigger" data-sound="bleep" data-spec="hackathon">
+                <div class="p1-marker">P1</div>
+                <div class="spec-icon">🏆</div>
+                <div class="spec-name">GLADIATOR</div>
+                <div class="spec-tag">IIIT / IISC 3RD PLACE</div>
+              </div>
+            </div>
+
+            <!-- Right Side: Developer Stats & Portrait Showcase -->
+            <div class="dev-profile-showcase">
+              <div class="dev-portrait-frame">
+                <img src="assets/avatar.jpg" alt="Sara Dhoundiyal" class="dev-portrait-img">
+                <div class="dev-name-badge">'SARA'</div>
+                <div class="dev-status-sub" id="devSpecTitle">AI/ML ENGINEER & RESEARCHER</div>
+              </div>
+
+              <div class="dev-stats-box">
+                <div class="stats-box-title">DEVELOPER STATS</div>
+
+                <!-- Segmented LED Stat Bars -->
+                <div class="stat-bar-group">
+                  <div class="stat-bar-label">
+                    <span>JAVASCRIPT:</span>
+                    <span id="statJsVal">8/10</span>
+                  </div>
+                  <div class="segmented-bar" id="statJsBar">
+                    <span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg"></span><span class="seg"></span>
+                  </div>
+                </div>
+
+                <div class="stat-bar-group">
+                  <div class="stat-bar-label">
+                    <span>PYTHON / AI:</span>
+                    <span id="statPyVal">9/10</span>
+                  </div>
+                  <div class="segmented-bar" id="statPyBar">
+                    <span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg"></span>
+                  </div>
+                </div>
+
+                <div class="stat-bar-group">
+                  <div class="stat-bar-label">
+                    <span>REACT & NODE:</span>
+                    <span id="statReactVal">9/10</span>
+                  </div>
+                  <div class="segmented-bar" id="statReactBar">
+                    <span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg"></span>
+                  </div>
+                </div>
+
+                <div class="stat-bar-group">
+                  <div class="stat-bar-label">
+                    <span>CREATIVITY:</span>
+                    <span id="statCreativityVal">10/10</span>
+                  </div>
+                  <div class="segmented-bar" id="statCreativityBar">
+                    <span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span>
+                  </div>
+                </div>
+
+                <div class="stat-bar-group">
+                  <div class="stat-bar-label">
+                    <span>COFFEE INTAKE:</span>
+                    <span id="statCoffeeVal">7/10</span>
+                  </div>
+                  <div class="segmented-bar" id="statCoffeeBar">
+                    <span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg active"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Arcade Instructions Bar -->
+          <div class="arcade-bottom-hints">
+            <a href="#missionsSection" class="arcade-hint-link sound-trigger" data-sound="bleep">[START] PROJECT DETAILS</a>
+            <span>|</span>
+            <a href="#level01" class="arcade-hint-link sound-trigger" data-sound="bleep">[SELECT] VIEW RESUME</a>
+            <span>|</span>
+            <a href="#contactSection" class="arcade-hint-link sound-trigger" data-sound="bleep">[A] CONTACT</a>
+            <span>|</span>
+            <a href="#windowBio" class="arcade-hint-link sound-trigger" data-sound="bleep">[B] ABOUT ME</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Showcase Layout: 3DS in Center + Retro OS Windows -->
+      <div class="ds-stage-layout">
+
+        <!-- Left Window: Hello / Player Bio -->
+        <div class="retro-window window-bio" id="windowBio">
+          <div class="window-titlebar">
+            <div class="titlebar-buttons">
+              <span class="win-dot close"></span>
+              <span class="win-dot min"></span>
+              <span class="win-dot max"></span>
+            </div>
+            <span class="win-title">Hello !!</span>
+            <span class="win-icon">👾</span>
+          </div>
+          <div class="window-content">
+            <div class="stat-line">
+              <span class="stat-label">Player:</span>
+              <span class="stat-val highlight-pink">Sara Dhoundiyal</span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">Role:</span>
+              <span class="stat-val highlight-green">Web Developer</span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">Location:</span>
+              <span class="stat-val">Delhi, India 📍</span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">Academic:</span>
+              <span class="stat-val">B.Tech IT (2024–2028), GGSIPU</span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">Grades:</span>
+              <span class="stat-val highlight-yellow">CGPA: 9.18 | Latest SGPA: 9.54</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Mission:</span>
+              <p class="mission-text">
+                "Build intelligent, human-centric AI solutions and resilient full-stack applications that solve real-world mobility, career, and financial challenges."
+              </p>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">Status:</span>
+              <span class="stat-val status-pulse">Ready to explore, build & win!</span>
+            </div>
+            <div class="window-footer-btn">
+              <button class="pixel-btn-sm sound-trigger" data-sound="coin" id="powerUpBtn">⚡ CLAIM BOOST</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTERPIECE: INTERACTIVE NINTENDO 3DS CONSOLE -->
+        <div class="nintendo-3ds-console" id="dsConsole">
+          <div class="ds-body">
+            <!-- 3DS TOP LID -->
+            <div class="ds-top-lid">
+              <div class="ds-camera-hole left"></div>
+              <div class="ds-camera-hole right"></div>
+              <div class="ds-3d-slider">
+                <span class="slider-notch"></span>
+                <span class="slider-text">3D</span>
+              </div>
+
+              <!-- Top Screen Frame -->
+              <div class="ds-top-screen-frame">
+                <div class="ds-speaker-grille left">
+                  <span></span><span></span><span></span>
+                </div>
+
+                <div class="ds-screen top-screen" id="dsTopScreen">
+                  <!-- Decorative Floating Stars inside screen -->
+                  <div class="screen-star star-tl">⭐</div>
+                  <div class="screen-star star-tr">⭐</div>
+                  <div class="screen-star star-bl">⭐</div>
+                  <div class="screen-star star-br">⭐</div>
+
+                  <!-- Screen Views (Switched by 3DS buttons & bottom tabs) -->
+                  <div class="screen-view active" id="viewAvatar">
+                    <img src="assets/avatar.jpg" alt="Sara 3DS Portrait" class="screen-avatar-img">
+                    <div class="screen-caption">SARA DHOUNDIYAL • LVL 03</div>
+                    <div class="screen-subcaption">PRESS BUTTONS BELOW 🎮</div>
+                  </div>
+
+                  <div class="screen-view" id="viewStats">
+                    <div class="screen-stat-title">⚡ STATS MATRIX ⚡</div>
+                    <div class="screen-bar-row">
+                      <span>FRONTEND:</span>
+                      <div class="screen-bar"><div class="bar-fill w-95"></div></div>
+                    </div>
+                    <div class="screen-bar-row">
+                      <span>BACKEND:</span>
+                      <div class="screen-bar"><div class="bar-fill w-90"></div></div>
+                    </div>
+                    <div class="screen-bar-row">
+                      <span>AI / ML:</span>
+                      <div class="screen-bar"><div class="bar-fill w-88"></div></div>
+                    </div>
+                    <div class="screen-bar-row">
+                      <span>DATA:</span>
+                      <div class="screen-bar"><div class="bar-fill w-85"></div></div>
+                    </div>
+                  </div>
+
+                  <div class="screen-view" id="viewQuests">
+                    <div class="screen-stat-title">📜 CURRENT GUILD 📜</div>
+                    <p class="screen-text highlight-pink">INAMIGOS FOUNDATION</p>
+                    <p class="screen-text">AI Web Development Intern</p>
+                    <p class="screen-text highlight-yellow">ODYMAX TECHNOLOGIES</p>
+                    <p class="screen-text">Full Stack Web Dev Intern</p>
+                  </div>
+
+                  <div class="screen-view" id="viewTrophies">
+                    <div class="screen-stat-title">🏆 TOP TROPHIES 🏆</div>
+                    <p class="screen-text highlight-yellow">🌐 RBI Harbinger '26 Semi-Finalist</p>
+                    <p class="screen-text">🥉 3rd Place - IIIT Bangalore</p>
+                    <p class="screen-text">🥉 3rd Place - IISc Bangalore</p>
+                    <p class="screen-text">⭐ EY Techathon Finalist</p>
+                    <p class="screen-text">⭐ PixelVerse Finalist</p>
+                  </div>
+                </div>
+
+                <div class="ds-speaker-grille right">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3DS HINGE -->
+            <div class="ds-hinge">
+              <div class="hinge-bar"></div>
+              <div class="hinge-lights">
+                <span class="power-light on"></span>
+                <span class="wifi-light on"></span>
+              </div>
+            </div>
+
+            <!-- 3DS BOTTOM BASE (Touch Screen + Controls) -->
+            <div class="ds-bottom-base">
+              <!-- Left Controls: Circle Pad & D-Pad -->
+              <div class="ds-controls-left">
+                <div class="circle-pad" id="circlePad" title="Circle Pad">
+                  <div class="circle-pad-inner"></div>
+                </div>
+                <div class="d-pad" id="dPad">
+                  <button class="d-btn d-up sound-trigger" data-sound="bleep" data-target="viewAvatar" title="Up: Portrait View">▲</button>
+                  <button class="d-btn d-left sound-trigger" data-sound="bleep" data-target="viewQuests" title="Left: Quests View">◀</button>
+                  <button class="d-btn d-center"></button>
+                  <button class="d-btn d-right sound-trigger" data-sound="bleep" data-target="viewStats" title="Right: Stats View">▶</button>
+                  <button class="d-btn d-down sound-trigger" data-sound="bleep" data-target="viewTrophies" title="Down: Trophies View">▼</button>
+                </div>
+              </div>
+
+              <!-- Center: Touch Screen -->
+              <div class="ds-bottom-screen-frame">
+                <div class="ds-screen bottom-touch-screen" id="dsTouchScreen">
+                  <div class="touch-screen-header">
+                    <span>TOUCH MENU</span>
+                    <span class="stylus-icon">🖊️</span>
+                  </div>
+                  <div class="touch-menu-grid">
+                    <button class="touch-tab-btn active sound-trigger" data-sound="bleep" data-screen="viewAvatar">
+                      <span class="tab-icon">👤</span>
+                      <span>AVATAR</span>
+                    </button>
+                    <button class="touch-tab-btn sound-trigger" data-sound="bleep" data-screen="viewStats">
+                      <span class="tab-icon">⚔️</span>
+                      <span>STATS</span>
+                    </button>
+                    <button class="touch-tab-btn sound-trigger" data-sound="bleep" data-screen="viewQuests">
+                      <span class="tab-icon">📜</span>
+                      <span>QUESTS</span>
+                    </button>
+                    <button class="touch-tab-btn sound-trigger" data-sound="bleep" data-screen="viewTrophies">
+                      <span class="tab-icon">🏆</span>
+                      <span>AWARDS</span>
+                    </button>
+                  </div>
+                  <div class="touch-screen-footer">
+                    <span>TAP ANY TAB OR CONSOLE BUTTON</span>
+                  </div>
+                </div>
+
+                <!-- Power & Home buttons below touch screen -->
+                <div class="ds-sub-buttons">
+                  <button class="ds-pill-btn sound-trigger" data-sound="coin" id="selectBtn">SELECT</button>
+                  <button class="ds-home-btn sound-trigger" data-sound="powerup" id="homeBtn">HOME</button>
+                  <button class="ds-pill-btn sound-trigger" data-sound="coin" id="startConsoleBtn">START</button>
+                </div>
+              </div>
+
+              <!-- Right Controls: Action Buttons ABXY & Power -->
+              <div class="ds-controls-right">
+                <div class="abxy-cluster">
+                  <button class="abxy-btn btn-x sound-trigger" data-sound="bleep" data-target="viewStats" title="X: Stats">X</button>
+                  <button class="abxy-btn btn-y sound-trigger" data-sound="bleep" data-target="viewQuests" title="Y: Quests">Y</button>
+                  <button class="abxy-btn btn-a sound-trigger" data-sound="coin" data-target="viewAvatar" title="A: Avatar / Coin">A</button>
+                  <button class="abxy-btn btn-b sound-trigger" data-sound="bleep" data-target="viewTrophies" title="B: Trophies">B</button>
+                </div>
+                <div class="power-button-wrapper">
+                  <button class="ds-power-btn sound-trigger" data-sound="powerup" id="powerConsoleBtn" title="Power / Reset Screen">⏻</button>
+                  <span class="power-label">POWER</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Window: Skills Mastery & Tools -->
+        <div class="retro-window window-skills" id="windowSkills">
+          <div class="window-titlebar">
+            <div class="titlebar-buttons">
+              <span class="win-dot close"></span>
+              <span class="win-dot min"></span>
+              <span class="win-dot max"></span>
+            </div>
+            <span class="win-title">Skills Mastery</span>
+            <span class="win-icon">⚔️</span>
+          </div>
+          <div class="window-content">
+            <div class="skill-category">
+              <span class="cat-title">⚔️ Weapons / Tech Stack:</span>
+              <div class="skill-tags">
+                <span class="skill-tag">React.js</span>
+                <span class="skill-tag">Vite</span>
+                <span class="skill-tag">JavaScript (ES6+)</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">HTML5 / CSS3</span>
+                <span class="skill-tag">Tailwind CSS</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">REST API</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">PHP</span>
+                <span class="skill-tag">JWT</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <span class="cat-title">🧠 AI & Data Science Spells:</span>
+              <div class="skill-tags">
+                <span class="skill-tag ai-tag">Python</span>
+                <span class="skill-tag ai-tag">Pandas</span>
+                <span class="skill-tag ai-tag">NumPy</span>
+                <span class="skill-tag ai-tag">scikit-learn</span>
+                <span class="skill-tag ai-tag">TensorFlow</span>
+                <span class="skill-tag ai-tag">NLP</span>
+                <span class="skill-tag ai-tag">Streamlit</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <span class="cat-title">🛡️ Core Capabilities:</span>
+              <ul class="pixel-bullet-list">
+                <li>Responsive & Accessible UI/UX</li>
+                <li>Design Thinking & Prototyping</li>
+                <li>Framer Motion Micro-Animations</li>
+                <li>Algorithmic Problem Solving (C, C#, Java)</li>
+                <li>Git & GitHub Collaborative Workflow</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Additional Floating Windows: Experience Log & Boss Trophies -->
+      <div class="extra-windows-grid">
+        <!-- Window: Guild Quests & Experience -->
+        <div class="retro-window window-exp" id="windowExp">
+          <div class="window-titlebar">
+            <div class="titlebar-buttons">
+              <span class="win-dot close"></span>
+              <span class="win-dot min"></span>
+              <span class="win-dot max"></span>
+            </div>
+            <span class="win-title">Guild Quests (Experience)</span>
+            <span class="win-icon">📜</span>
+          </div>
+          <div class="window-content">
+            <!-- Experience Item 1: InAmigos -->
+            <div class="exp-card highlight-card">
+              <div class="exp-header">
+                <span class="exp-role">AI Web Development • Intern</span>
+                <span class="exp-date">Aug 2026</span>
+              </div>
+              <div class="exp-org">InAmigos Foundation • Virtual (via Internshala)</div>
+              <p class="exp-desc">
+                Selected for the prestigious AI Web Development internship through a competitive screening process. Engineering AI-assisted web applications, modern interfaces, and user workflows.
+              </p>
+            </div>
+
+            <!-- Experience Item 2: Odymax -->
+            <div class="exp-card">
+              <div class="exp-header">
+                <span class="exp-role">Full Stack Web Development • Intern</span>
+                <span class="exp-date">Jun 2026 – Aug 2026</span>
+              </div>
+              <div class="exp-org">Odymax Technologies • New Delhi</div>
+              <p class="exp-desc">
+                Engineered frontend and backend architectures using HTML, CSS, JavaScript, React.js, Node.js, and database technologies. Translated complex system findings into high-impact user experiences.
+              </p>
+            </div>
+
+            <!-- Experience Item 3: TATA Forage -->
+            <div class="exp-card">
+              <div class="exp-header">
+                <span class="exp-role">Data Analytics • Simulation Intern</span>
+                <span class="exp-date">Jul 2026</span>
+              </div>
+              <div class="exp-org">Forage - TATA • Virtual</div>
+              <p class="exp-desc">
+                Completed the GenAI Powered Data Analytics simulation: exploratory data analysis, risk profiling, AI-based delinquency prediction, and business storytelling to drive collections strategy.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Window: Boss Trophies & Hackathon Honors -->
+        <div class="retro-window window-trophies" id="windowTrophies">
+          <div class="window-titlebar">
+            <div class="titlebar-buttons">
+              <span class="win-dot close"></span>
+              <span class="win-dot min"></span>
+              <span class="win-dot max"></span>
+            </div>
+            <span class="win-title">Boss Battles Won (Hackathons)</span>
+            <span class="win-icon">🏆</span>
+          </div>
+          <div class="window-content">
+            <div class="trophy-list">
+              <div class="trophy-item highlight-trophy">
+                <span class="trophy-icon">🌐</span>
+                <div class="trophy-text">
+                  <strong>Semi-Finalist (Round 1 Cleared)</strong> — RBI HARBINGER 2026 (Global Innovation Hackathon, International Level)
+                </div>
+              </div>
+              <div class="trophy-item">
+                <span class="trophy-icon">🥉</span>
+                <div class="trophy-text">
+                  <strong>3rd Place</strong> — Neural.Net Hackathon, IIIT Bangalore (Synergy'25)
+                </div>
+              </div>
+              <div class="trophy-item">
+                <span class="trophy-icon">🥉</span>
+                <div class="trophy-text">
+                  <strong>3rd Place</strong> — ARTPARK ProtoDash Challenge, Indian Institute of Science (IISc), Bangalore
+                </div>
+              </div>
+              <div class="trophy-item">
+                <span class="trophy-icon">🌟</span>
+                <div class="trophy-text">
+                  <strong>Finalist</strong> — PixelVerse National UI/UX Hackathon, IIIT Bangalore
+                </div>
+              </div>
+              <div class="trophy-item">
+                <span class="trophy-icon">🌟</span>
+                <div class="trophy-text">
+                  <strong>Finalist</strong> — Innerve Hacks, Indira Gandhi Delhi Technical University for Women (IGDTUW)
+                </div>
+              </div>
+              <div class="trophy-item">
+                <span class="trophy-icon">💼</span>
+                <div class="trophy-text">
+                  <strong>Selected through 2 rounds</strong> — EY Techathon 6.0, Ernst & Young
+                </div>
+              </div>
+              <div class="trophy-item">
+                <span class="trophy-icon">⚡</span>
+                <div class="trophy-text">
+                  <strong>Round 2 Qualifier</strong> — NEXTGEN AI Hackathon & Delhi Zonal Qualifier HackArena 2.0
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE RIBBON 2 -->
+    <div class="marquee-ribbon green-ribbon">
+      <div class="marquee-track">
+        <span>★ LEVEL 02: MISSIONS & PROJECTS ★ 3D CARTRIDGE COVER-FLOW ★ ROTATE WITH ◀ ARROWS ▶ OR DRAG ★ SELECT A CARTRIDGE TO LAUNCH ★ LEVEL 02: MISSIONS & PROJECTS ★ 3D CARTRIDGE COVER-FLOW ★ ROTATE WITH ◀ ARROWS ▶ OR DRAG ★</span>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- LEVEL 02: MISSIONS 3D COVER-FLOW SLIDER (Reference 2)     -->
+    <!-- ========================================================= -->
+    <section class="level-section missions-section" id="missionsSection">
+      <div class="section-header">
+        <div class="level-badge">Level 02</div>
+        <h2 class="section-title">Missions Showcase</h2>
+        <p class="section-desc">Interactive 3D Game Cartridge Slider (Inspired by gustavobatista.dev)</p>
+      </div>
+
+      <!-- 3D Slider Controls & Indicator -->
+      <div class="carousel-control-panel">
+        <button class="arcade-btn prev-btn sound-trigger" data-sound="bleep" id="prevSlideBtn" aria-label="Previous Project">
+          ◀ PREV CARTRIDGE
+        </button>
+
+        <div class="cartridge-tracker" id="cartridgeTracker">
+          <span class="tracker-dot active" data-index="0"></span>
+          <span class="tracker-dot" data-index="1"></span>
+          <span class="tracker-dot" data-index="2"></span>
+          <span class="tracker-dot" data-index="3"></span>
+          <span class="tracker-dot" data-index="4"></span>
+        </div>
+
+        <button class="arcade-btn next-btn sound-trigger" data-sound="bleep" id="nextSlideBtn" aria-label="Next Project">
+          NEXT CARTRIDGE ▶
+        </button>
+      </div>
+
+      <!-- 3D COVER-FLOW CAROUSEL CONTAINER -->
+      <div class="coverflow-viewport" id="coverflowViewport">
+        <div class="coverflow-track" id="coverflowTrack">
+
+          <!-- CARTRIDGE 1: Mentra.AI (DEPLOYED ON VERCEL) -->
+          <article class="cartridge-card active" data-index="0">
+            <div class="cartridge-3d-box">
+              <div class="cartridge-spine">MENTRA.AI • AI CAREER</div>
+              <div class="cartridge-front">
+                <div class="cartridge-header">
+                  <span class="game-edition">🚀 LIVE ON VERCEL</span>
+                  <span class="game-year">AUG 2026</span>
+                </div>
+                <div class="cartridge-screen has-project-glimpse mentra-art">
+                  <div class="screen-scanlines"></div>
+                  <img src="assets/mentra_actual.png" alt="Mentra.AI Real Interface Glimpse" class="project-glimpse-img" />
+                  <div class="project-screen-banner">
+                    <span class="glimpse-tag">★ ACTUAL LIVE GLIMPSE ★</span>
+                    <span class="glimpse-title">Mentra.AI</span>
+                  </div>
+                </div>
+                <div class="cartridge-info">
+                  <h3 class="project-title">Mentra.AI</h3>
+                  <p class="project-summary">
+                    First agentic + generative AI-powered career coach: skill-gap analysis, personalized roadmap generator, and interactive mock interview UI.
+                  </p>
+                  <div class="project-tags">
+                    <span class="ptag">React</span>
+                    <span class="ptag">Framer Motion</span>
+                    <span class="ptag">Agentic AI</span>
+                    <span class="ptag">Vercel Live</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="https://aimentra-three.vercel.app/" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm launch-btn sound-trigger" data-sound="powerup">
+                      🚀 LAUNCH LIVE APP
+                    </a>
+                    <a href="https://github.com/Sasha-Mx/Mentra.AI" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger" data-sound="bleep" style="background:#25164d; margin-top:4px;">
+                      💻 GITHUB REPO
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARTRIDGE 2: PawCare (DEPLOYED ON VERCEL) -->
+          <article class="cartridge-card next-1" data-index="1">
+            <div class="cartridge-3d-box">
+              <div class="cartridge-spine">PAWCARE • PET CARE APP</div>
+              <div class="cartridge-front">
+                <div class="cartridge-header">
+                  <span class="game-edition">🚀 LIVE ON VERCEL</span>
+                  <span class="game-year">SEP 2026</span>
+                </div>
+                <div class="cartridge-screen has-project-glimpse pawcare-art">
+                  <div class="screen-scanlines"></div>
+                  <img src="assets/pawcare_actual.png" alt="PawCare Real Interface Glimpse" class="project-glimpse-img" />
+                  <div class="project-screen-banner">
+                    <span class="glimpse-tag">★ ACTUAL LIVE GLIMPSE ★</span>
+                    <span class="glimpse-title">PawCare</span>
+                  </div>
+                </div>
+                <div class="cartridge-info">
+                  <h3 class="project-title">PawCare</h3>
+                  <p class="project-summary">
+                    Modern frontend-based PetCare application featuring pet health profiles, appointment booking workflows, and responsive veterinary service dashboards.
+                  </p>
+                  <div class="project-tags">
+                    <span class="ptag">JavaScript</span>
+                    <span class="ptag">Vercel Live</span>
+                    <span class="ptag">Frontend</span>
+                    <span class="ptag">UX Design</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="https://paw-care-zeta.vercel.app" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm launch-btn sound-trigger" data-sound="powerup">
+                      🚀 LAUNCH LIVE APP
+                    </a>
+                    <a href="https://github.com/Sasha-Mx/PawCare" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger" data-sound="bleep" style="background:#25164d; margin-top:4px;">
+                      💻 GITHUB REPO
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARTRIDGE 3: MinDOasis (DEPLOYED ON VERCEL) -->
+          <article class="cartridge-card next-2" data-index="2">
+            <div class="cartridge-3d-box">
+              <div class="cartridge-spine">MINDOASIS • WELLNESS</div>
+              <div class="cartridge-front">
+                <div class="cartridge-header">
+                  <span class="game-edition">🚀 LIVE ON VERCEL</span>
+                  <span class="game-year">AUG 2026</span>
+                </div>
+                <div class="cartridge-screen has-project-glimpse mindoasis-art">
+                  <div class="screen-scanlines"></div>
+                  <img src="assets/mindoasis_actual.png" alt="MindOasis Real Interface Glimpse" class="project-glimpse-img" />
+                  <div class="project-screen-banner">
+                    <span class="glimpse-tag">★ ACTUAL LIVE GLIMPSE ★</span>
+                    <span class="glimpse-title">MindOasis</span>
+                  </div>
+                </div>
+                <div class="cartridge-info">
+                  <h3 class="project-title">MinDOasis</h3>
+                  <p class="project-summary">
+                    Mental wellness web application featuring mood tracking, mindful journaling, and AI conversational assistance with an empathetic, calming UI.
+                  </p>
+                  <div class="project-tags">
+                    <span class="ptag">JavaScript</span>
+                    <span class="ptag">Vercel Live</span>
+                    <span class="ptag">Mental Health</span>
+                    <span class="ptag">UX Empathy</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="https://mindoasis-proto.vercel.app" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm launch-btn sound-trigger" data-sound="powerup">
+                      🚀 LAUNCH LIVE APP
+                    </a>
+                    <a href="https://github.com/Sasha-Mx/MinDOasis" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger" data-sound="bleep" style="background:#25164d; margin-top:4px;">
+                      💻 GITHUB REPO
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARTRIDGE 4: RouteIQ (DEPLOYED ON VERCEL) -->
+          <article class="cartridge-card" data-index="3">
+            <div class="cartridge-3d-box">
+              <div class="cartridge-spine">ROUTEIQ • DELHI TRANSIT</div>
+              <div class="cartridge-front">
+                <div class="cartridge-header">
+                  <span class="game-edition">🚀 LIVE ON VERCEL</span>
+                  <span class="game-year">JUN 2026</span>
+                </div>
+                <div class="cartridge-screen has-project-glimpse routeiq-art">
+                  <div class="screen-scanlines"></div>
+                  <img src="assets/routeiq_actual.png" alt="RouteIQ Real Interface Glimpse" class="project-glimpse-img" />
+                  <div class="project-screen-banner">
+                    <span class="glimpse-tag">★ ACTUAL LIVE GLIMPSE ★</span>
+                    <span class="glimpse-title">RouteIQ</span>
+                  </div>
+                </div>
+                <div class="cartridge-info">
+                  <h3 class="project-title">RouteIQ</h3>
+                  <p class="project-summary">
+                    AI transit companion for Delhi commuters: live bus tracking, dynamic replanning, and fare cost comparison vs. Uber/Ola.
+                  </p>
+                  <div class="project-tags">
+                    <span class="ptag">JavaScript</span>
+                    <span class="ptag">Vercel Live</span>
+                    <span class="ptag">Mobility AI</span>
+                    <span class="ptag">GTFS</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="https://route-iq-delta.vercel.app" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm launch-btn sound-trigger" data-sound="powerup">
+                      🚀 LAUNCH LIVE APP
+                    </a>
+                    <a href="https://github.com/Sasha-Mx/RouteIQ" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger" data-sound="bleep" style="background:#25164d; margin-top:4px;">
+                      💻 GITHUB REPO
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARTRIDGE 5: ArthSahay (DEPLOYED ON VERCEL) -->
+          <article class="cartridge-card prev-1" data-index="4">
+            <div class="cartridge-3d-box">
+              <div class="cartridge-spine">ARTHSAHAY • LOAN ASSISTANT</div>
+              <div class="cartridge-front">
+                <div class="cartridge-header">
+                  <span class="game-edition">🚀 LIVE ON VERCEL</span>
+                  <span class="game-year">SEP 2026</span>
+                </div>
+                <div class="cartridge-screen has-project-glimpse arthsahay-art">
+                  <div class="screen-scanlines"></div>
+                  <img src="assets/arthsahay_actual.png" alt="ArthSahay Real Interface Glimpse" class="project-glimpse-img" />
+                  <div class="project-screen-banner">
+                    <span class="glimpse-tag">★ ACTUAL LIVE GLIMPSE ★</span>
+                    <span class="glimpse-title">ArthSahay</span>
+                  </div>
+                </div>
+                <div class="cartridge-info">
+                  <h3 class="project-title">ArthSahay</h3>
+                  <p class="project-summary">
+                    Personal loan assistant with conversational AI to simplify loan guidance, eligibility evaluation, and financial decision-making.
+                  </p>
+                  <div class="project-tags">
+                    <span class="ptag">TypeScript</span>
+                    <span class="ptag">Vercel Live</span>
+                    <span class="ptag">Conversational AI</span>
+                    <span class="ptag">Fintech</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="https://arth-sahay-sasha-mxs-projects.vercel.app" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm launch-btn sound-trigger" data-sound="powerup">
+                      🚀 LAUNCH LIVE APP
+                    </a>
+                    <a href="https://github.com/Sasha-Mx/ArthSahay" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger" data-sound="bleep" style="background:#25164d; margin-top:4px;">
+                      💻 GITHUB REPO
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+      <p class="coverflow-hint">⌨ TIP: USE LEFT / RIGHT ARROW KEYS TO SLIDE CARTRIDGES</p>
+
+      <!-- MANY MORE PROJECTS ARCHIVE BADGE -->
+      <div class="more-repos-container">
+        <div class="more-repos-card">
+          <div class="more-repos-left">
+            <span class="more-icon">📂</span>
+            <div class="more-text-block">
+              <h4 class="more-title">+ 4 MORE PROJECTS ON GITHUB</h4>
+              <p class="more-desc">ET-Pulse (Economic Times Fintech), GriefBot, Neural.Net AgenticAI Projects 1 & 2, and open-source experiments.</p>
+            </div>
+          </div>
+          <a href="https://github.com/Sasha-Mx?tab=repositories" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm more-github-btn sound-trigger" data-sound="powerup">
+            VIEW ALL PROJECTS ON GITHUB ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE RIBBON 3 -->
+    <div class="marquee-ribbon pink-ribbon">
+      <div class="marquee-track">
+        <span>★ INITIALIZE TRANSMISSION ★ LEVEL COMPLETE ★ CONTACT PLAYER 01: SARA DHOUNDIYAL ★ DELHI, INDIA ★ OPEN FOR OPPORTUNITIES ★ INITIALIZE TRANSMISSION ★ LEVEL COMPLETE ★ CONTACT PLAYER 01: SARA DHOUNDIYAL ★</span>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- LEVEL 03: PLATFORMER GROUND & CONTACT TERMINAL            -->
+    <!-- ========================================================= -->
+    <section class="level-section contact-section" id="contactSection">
+      <div class="section-header">
+        <div class="level-badge">Level 03</div>
+        <h2 class="section-title">Transmission Terminal</h2>
+        <p class="section-desc">Connect with Player 01 • Send a message or unlock career quests</p>
+      </div>
+
+      <!-- Mario-Style Interactive Platformer Ground -->
+      <div class="retro-platformer-ground">
+        <div class="interactive-stage">
+          <!-- Mystery Question Blocks (Click to earn points and play coin sound) -->
+          <div class="brick-row">
+            <div class="pixel-block brick"></div>
+            <div class="pixel-block question-block sound-trigger" data-sound="coin" id="qBlock1" title="Hit for coins!">
+              <span>?</span>
+            </div>
+            <div class="pixel-block brick"></div>
+            <div class="pixel-block question-block sound-trigger" data-sound="coin" id="qBlock2" title="Hit for coins!">
+              <span>?</span>
+            </div>
+            <div class="pixel-block brick"></div>
+          </div>
+
+          <!-- Warp Pipe with animated flower sprout -->
+          <div class="warp-pipe" id="warpPipe" title="Secret Warp Pipe!">
+            <div class="piranha-sprout">🌱</div>
+            <div class="pipe-lip"></div>
+            <div class="pipe-body"></div>
+          </div>
+
+          <!-- Dungeon Castle Door (Portal) -->
+          <div class="castle-door" id="castleDoor" title="Dungeon Exit Portal">
+            <div class="door-arch"></div>
+            <div class="door-panel">
+              <span class="door-keyhole">🔑</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Coins counter -->
+        <div class="coin-score-board" id="coinScoreBoard">
+          <span>COINS COLLECTED:</span>
+          <span class="coin-num" id="coinCounter">00</span>
+          <span class="coin-icon">🪙</span>
+        </div>
+      </div>
+
+      <!-- Contact Terminal Window -->
+      <div class="retro-window contact-window" id="windowContact">
+        <div class="window-titlebar">
+          <div class="titlebar-buttons">
+            <span class="win-dot close"></span>
+            <span class="win-dot min"></span>
+            <span class="win-dot max"></span>
+          </div>
+          <span class="win-title">Transmission Terminal v2.6</span>
+          <span class="win-icon">📡</span>
+        </div>
+        <div class="window-content contact-grid">
+
+          <!-- Left Column: Direct Links -->
+          <div class="contact-links-panel">
+            <h3 class="panel-heading">PLAYER CHANNELS</h3>
+
+            <!-- Email Card with Copy Button -->
+            <div class="contact-card">
+              <div class="c-icon">📧</div>
+              <div class="c-details">
+                <div class="c-label">DIRECT EMAIL:</div>
+                <div class="c-val" id="emailVal">saradhoundiyal296@gmail.com</div>
+              </div>
+              <button class="pixel-btn-sm sound-trigger" data-sound="coin" id="copyEmailBtn">
+                📋 COPY
+              </button>
+            </div>
+
+            <!-- Phone Card -->
+            <div class="contact-card">
+              <div class="c-icon">📱</div>
+              <div class="c-details">
+                <div class="c-label">PHONE:</div>
+                <div class="c-val">+91 7291019121</div>
+              </div>
+              <a href="tel:+917291019121" class="pixel-btn-sm sound-trigger" data-sound="bleep">
+                📞 CALL
+              </a>
+            </div>
+
+            <!-- LinkedIn Card -->
+            <div class="contact-card">
+              <div class="c-icon">💼</div>
+              <div class="c-details">
+                <div class="c-label">LINKEDIN:</div>
+                <div class="c-val">Sara Dhoundiyal on LinkedIn</div>
+              </div>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger" data-sound="bleep">
+                🔗 VISIT
+              </a>
+            </div>
+
+            <!-- GitHub Card -->
+            <div class="contact-card">
+              <div class="c-icon">🐙</div>
+              <div class="c-details">
+                <div class="c-label">GITHUB:</div>
+                <div class="c-val">github.com/saradhoundiyal</div>
+              </div>
+              <a href="https://github.com/saradhoundiyal" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger" data-sound="bleep">
+                💻 CODE
+              </a>
+            </div>
+
+            <!-- Resume / Drive Card -->
+            <div class="contact-card">
+              <div class="c-icon">📜</div>
+              <div class="c-details">
+                <div class="c-label">OFFICIAL RESUME:</div>
+                <div class="c-val">B.Tech IT (CGPA 9.18) Resume</div>
+              </div>
+              <a href="#level01" class="pixel-btn-sm sound-trigger" data-sound="coin" id="viewResumeBtn">
+                📄 VIEW
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Quick Transmission Dispatch -->
+          <div class="contact-form-panel">
+            <h3 class="panel-heading">TRANSMIT A MESSAGE</h3>
+            <form id="contactForm" class="pixel-form">
+              <div class="form-group">
+                <label for="senderName" class="form-label">SENDER NAME / ORG:</label>
+                <input type="text" id="senderName" required class="pixel-input" placeholder="e.g. InAmigos Recruiter">
+              </div>
+              <div class="form-group">
+                <label for="senderSubject" class="form-label">QUEST SUBJECT:</label>
+                <input type="text" id="senderSubject" required class="pixel-input" placeholder="e.g. AI Internship / Job Opportunity">
+              </div>
+              <div class="form-group">
+                <label for="senderMessage" class="form-label">TRANSMISSION CONTENT:</label>
+                <textarea id="senderMessage" rows="4" required class="pixel-input" placeholder="Write your transmission to Sara..."></textarea>
+              </div>
+              <button type="submit" class="pixel-btn start-btn submit-btn sound-trigger" data-sound="powerup" id="sendBtn">
+                <span class="btn-border"></span>
+                <span class="btn-text">⚡ SEND TRANSMISSION</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- MODAL DOSSIER POPUP (For Project Details)                 -->
+  <!-- ========================================================= -->
+  <div class="retro-modal" id="projectModal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-window">
+      <div class="window-titlebar">
+        <div class="titlebar-buttons">
+          <span class="win-dot close" id="modalCloseBtn"></span>
+        </div>
+        <span class="win-title" id="modalTitle">Project Mission Dossier</span>
+        <span class="win-icon">📂</span>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- PLAYABLE MINI-GAME MODAL: SARA CHASING MEOW               -->
+  <!-- ========================================================= -->
+  <div class="retro-modal game-modal" id="arcadeGameModal" aria-hidden="true">
+    <div class="modal-backdrop" id="gameModalBackdrop"></div>
+    <div class="arcade-cabinet-modal">
+      <div class="window-titlebar arcade-game-titlebar">
+        <div class="titlebar-buttons">
+          <span class="win-dot close" id="gameCloseBtn" title="Close Game"></span>
+        </div>
+        <span class="win-title">🎮 SARA'S QUEST: CHASING MEOW! v1.0</span>
+        <button class="pixel-btn-sm" id="gameExitBtn">✕ EXIT TO PORTFOLIO</button>
+      </div>
+
+      <div class="game-hud-bar">
+        <div class="hud-score-item">
+          <span class="ghud-label">SCORE:</span>
+          <span class="ghud-val" id="runnerScore">0000</span>
+        </div>
+        <div class="hud-score-item">
+          <span class="ghud-label">HIGH:</span>
+          <span class="ghud-val" id="runnerHighScore">0000</span>
+        </div>
+        <div class="hud-score-item">
+          <span class="ghud-label">COINS:</span>
+          <span class="ghud-val" id="runnerCoins">00 🪙</span>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <canvas id="runnerCanvas" width="680" height="260"></canvas>
+
+        <!-- Overlay: Game Start Screen -->
+        <div class="game-overlay" id="gameStartOverlay">
+          <h2 class="game-start-title">SARA CHASING MEOW!</h2>
+          <p class="game-start-desc">Meow darted off with Sara's AI neural weights! Jump obstacles and catch Meow!</p>
+          <div class="game-instructions-box">
+            <span>⌨ CONTROLS: SPACEBAR / UP ARROW / TAP SCREEN TO JUMP</span>
+            <span>⚡ PRESS JUMP TWICE FOR DOUBLE JUMP!</span>
+          </div>
+          <button class="pixel-btn start-btn sound-trigger" data-sound="coin" id="runnerStartBtn">
+            <span class="btn-text">▶ START RUNNING!</span>
+          </button>
+        </div>
+
+        <!-- Overlay: Game Over Screen -->
+        <div class="game-overlay hidden" id="gameOverOverlay">
+          <h2 class="game-over-title">GAME OVER!</h2>
+          <p class="game-over-score">FINAL DISTANCE: <span id="finalScoreVal">0</span> M</p>
+          <p class="game-over-coins">COINS COLLECTED: <span id="finalCoinsVal">0</span> 🪙</p>
+          <div class="game-over-actions">
+            <button class="pixel-btn start-btn sound-trigger" data-sound="coin" id="runnerRestartBtn">
+              <span class="btn-text">↺ PLAY AGAIN</span>
+            </button>
+            <button class="pixel-btn secondary-btn" id="runnerContinueBtn">
+              <span class="btn-text">📜 CONTINUE TO PORTFOLIO ▶</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-bottom-controls">
+        <span class="mobile-hint">📱 ON MOBILE: TAP BUTTON BELOW OR TAP SCREEN TO JUMP</span>
+        <button class="mobile-jump-btn sound-trigger" data-sound="bleep" id="mobileJumpBtn">
+          ⬆ TAP TO JUMP (DOUBLE TAP = HIGH JUMP)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="pixel-toast" id="pixelToast">
+    <span class="toast-icon">⭐</span>
+    <span class="toast-msg" id="toastMsg">Email copied to clipboard!</span>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER                                                    -->
+  <!-- ========================================================= -->
+  <footer class="game-footer">
+    <div class="footer-content">
+      <p class="footer-text">© 2026 SARA DHOUNDIYAL • CRAFTED FOR INAMIGOS FOUNDATION ASSESSMENT (TASK 1)</p>
+      <p class="footer-subtext">MADE WITH RETRO 8-BIT PASSION, NINTENDO 3DS NOSTALGIA & PURE WEB TECH</p>
+      <div class="footer-links">
+        <a href="#heroSection" class="footer-link sound-trigger" data-sound="bleep">▲ TOP OF PAGE</a>
+        <a href="https://aimentra-three.vercel.app/" target="_blank" rel="noopener noreferrer" class="footer-link">MENTRA.AI</a>
+        <span class="footer-tag">KONAMI CODE ENABLED 🎮</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
