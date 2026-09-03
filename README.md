@@ -2,6 +2,8 @@
 
 An ultra-polished, interactive, gamified personal profile & portfolio website built for the **InAmigos Foundation Assessment (Task 1: Personal Profile Website - AI Based)**.
 
+👉 **Live Website**: [https://portfolio-dg92.vercel.app/](https://portfolio-dg92.vercel.app/)
+
 ---
 
 ## 🌟 Highlights & Features
