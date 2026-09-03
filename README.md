@@ -93,7 +93,7 @@ Then visit: **`http://localhost:8080`**
 - [x] **Name**: Sara Dhoundiyal
 - [x] **Introduction**: Highlighted in "Hello !!" window & 3DS console (B.Tech IT, CGPA 9.18, AI & Full Stack Developer)
 - [x] **Skills**: Weapons Mastery (React, Node, Python, AI/ML, MongoDB, Tailwind CSS)
-- [x] **Contact Details**: Direct email (`saradhoundiyal296@gmail.com`), phone (`+91 7291019121`), LinkedIn, GitHub
+- [x] **Contact Details**: Direct email (`saradhoundiyal296@gmail.com`), LinkedIn, GitHub
 - [ ] **Live Link**: Deploy via Vercel/Netlify/GitHub Pages and copy the URL.
 - [ ] **Google Drive Folder**:
   - Save the live website link in a text document or shortcut.

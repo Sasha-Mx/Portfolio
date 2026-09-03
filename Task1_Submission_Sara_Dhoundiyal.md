@@ -13,7 +13,7 @@
 | **Task Title** | Assessment – Task 1: Personal Profile Website (AI Based) |
 | **Submission Deadline** | 5th September 2026 | 7:00 PM |
 | **Format** | Live Website Link & Documentation Package |
-| **Primary Contact** | saradhoundiyal296@gmail.com | +91 7291019121 |
+| **Primary Contact** | saradhoundiyal296@gmail.com |
 | **Location** | Delhi, India |
 
 ---
@@ -32,39 +32,25 @@
 
 ---
 
-### 📸 Project & Website Screenshots
+### 📸 Portfolio Application Screenshots
 
-#### 1. Live Hero Section & Atmospheric Engine
+#### 1. Live Hero Section & Atmospheric Engine (Vercel Live)
 ![Hero Section Live](screenshots/01_hero_live.png)
 
-#### 2. Interactive Nintendo 3DS Dual-Screen Console
-![Nintendo 3DS Hardware Console](screenshots/02_nintendo_3ds_console.png)
+#### 2. Interactive Nintendo 3DS Dual-Screen Hardware Console
+![Nintendo 3DS Console](screenshots/02_nintendo_3ds_console.png)
 
-#### 3. 16-Bit RPG Adventure World Map & Player HUD
-![RPG Adventure Realm Map](screenshots/03_rpg_world_map.jpg)
+#### 3. Nintendo 3DS Interactive Stats Matrix & OS Windows
+![Nintendo 3DS Stats Matrix](screenshots/03_3ds_stats_matrix.png)
 
-#### 4. Sara Dhoundiyal — Animated Gamified Character Avatar
-![Sara Gamified Avatar](screenshots/09_sara_gamified_avatar.jpg)
+#### 4. 16-Bit RPG Adventure Overworld Map & Player HUD
+![RPG Adventure Realm Map](screenshots/04_rpg_world_map.png)
 
-#### 5. Project Glimpse: Mentra.AI (Career Roadmap & AI Mock Interview)
-*Live Deployment: [aimentra-three.vercel.app](https://aimentra-three.vercel.app/)*  
-![Mentra.AI Screenshot](screenshots/03_project_mentra_ai.png)
+#### 5. "Choose Your Developer!" Arcade Fighter Select Cabinet
+![Developer Select Cabinet](screenshots/05_developer_select_cabinet.png)
 
-#### 6. Project Glimpse: PawCare (Veterinary Health & Pet Care App)
-*Live Deployment: [paw-care-zeta.vercel.app](https://paw-care-zeta.vercel.app)*  
-![PawCare Screenshot](screenshots/04_project_pawcare.png)
-
-#### 7. Project Glimpse: MinDOasis (Mental Wellness & Emotion Tracking)
-*Live Deployment: [mindoasis-proto.vercel.app](https://mindoasis-proto.vercel.app)*  
-![MinDOasis Screenshot](screenshots/05_project_mindoasis.png)
-
-#### 8. Project Glimpse: RouteIQ (Delhi Transit Replanner with GTFS)
-*Live Deployment: [route-iq-delta.vercel.app](https://route-iq-delta.vercel.app)*  
-![RouteIQ Screenshot](screenshots/06_project_routeiq.png)
-
-#### 9. Project Glimpse: ArthSahay (Conversational AI Loan Guide • Tata Capital)
-*Live Deployment: [arth-sahay-sasha-mxs-projects.vercel.app](https://arth-sahay-sasha-mxs-projects.vercel.app)*  
-![ArthSahay Screenshot](screenshots/07_project_arthsahay.png)
+#### 6. Sara Dhoundiyal — Animated Gamified Character Avatar
+![Sara Gamified Avatar](screenshots/06_sara_gamified_avatar.jpg)
 
 ---
 
