@@ -1035,7 +1035,6 @@
   const realSaraModal = document.getElementById('realSaraModal');
   const saraModalBackdrop = document.getElementById('saraModalBackdrop');
   const saraPopupCloseBtn = document.getElementById('saraPopupCloseBtn');
-  const mapSaraPlayerBtn = document.getElementById('mapSaraPlayerBtn');
   const mapPlayerHudBtn = document.getElementById('mapPlayerHudBtn');
 
   function openRealSaraPopup(e) {
@@ -1056,9 +1055,6 @@
     triggerSound('bleep');
   }
 
-  if (mapSaraPlayerBtn) {
-    mapSaraPlayerBtn.addEventListener('click', openRealSaraPopup);
-  }
 
   if (mapPlayerHudBtn) {
     mapPlayerHudBtn.addEventListener('click', openRealSaraPopup);

@@ -4327,88 +4327,27 @@ body.vanta-fog-off .vanta-fog-container {
 }
 
 /* ==========================================================================
-   WORLD MAP SMALL BOUNCING SARA CHARACTER SPRITE
+   WORLD MAP PLAYER HUD ("SARA FULL-STACK" EASTER EGG TRIGGER)
    ========================================================================== */
-.map-sara-player-btn {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 25;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  outline: none;
-}
-
-.sara-char-bounce {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  animation: mapCharBounce 0.9s infinite alternate ease-in-out;
-}
-
-@keyframes mapCharBounce {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-7px); }
-}
-
-.sara-map-sprite {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 2px solid #ff2a85;
-  box-shadow: 0 0 10px rgba(255, 42, 133, 0.7), 0 2px 4px #000;
-  object-fit: cover;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
-.map-sara-player-btn:hover .sara-map-sprite {
-  transform: scale(1.2);
-  box-shadow: 0 0 16px rgba(255, 42, 133, 1), 0 0 8px #00ff88;
-}
-
-.sara-speech-bubble {
-  position: absolute;
-  top: -18px;
-  background: #ff2a85;
-  color: #fff;
-  font-family: var(--font-pixel);
-  font-size: 0.5rem;
-  padding: 2px 5px;
-  border-radius: 4px;
-  border: 1px solid #000;
-  white-space: nowrap;
-  box-shadow: 1px 1px 0px #000;
-  pointer-events: none;
-  animation: bubbleWiggle 1.8s infinite alternate ease-in-out;
-}
-
-@keyframes bubbleWiggle {
-  0% { transform: translateY(0) rotate(-2deg); }
-  100% { transform: translateY(-3px) rotate(2deg); }
-}
-
-.sara-char-shadow {
-  width: 26px;
-  height: 6px;
-  background: rgba(0, 0, 0, 0.45);
-  border-radius: 50%;
-  margin-top: -2px;
-  filter: blur(1px);
-}
-
 .clickable-player-hud {
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.2s;
+  transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28), box-shadow 0.2s, border-color 0.2s;
 }
 
 .clickable-player-hud:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 15px rgba(255, 236, 64, 0.6), 3px 3px 0 #000;
+  transform: scale(1.06) translateY(-2px);
+  border-color: #ff2a85 !important;
+  box-shadow: 0 0 20px rgba(255, 42, 133, 0.8), 4px 4px 0 #000 !important;
+}
+
+.clickable-player-hud:hover .map-hud-avatar {
+  border-color: #ff2a85;
+  box-shadow: 0 0 12px rgba(255, 42, 133, 0.9);
+  transform: scale(1.08);
+}
+
+.clickable-player-hud:active {
+  transform: scale(0.98);
 }
 
 .hud-click-hint {
@@ -4463,24 +4402,6 @@ body.vanta-fog-off .vanta-fog-container {
   }
 }
 
-/* Subtle CRT scanline overlay inside card */
-.sara-popup-crt {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.12) 0px,
-    rgba(0, 0, 0, 0.12) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  pointer-events: none;
-  z-index: 2;
-  border-radius: 12px;
-}
 
 /* Cute Floating Sparkles & Mascots */
 .cute-sparkle {
@@ -4597,7 +4518,7 @@ body.vanta-fog-off .vanta-fog-container {
   font-size: 0.5rem;
 }
 
-/* Real Photo Frame */
+/* Real Photo Frame (100% clean, no grid lines, no overlays, untouched natural photo) */
 .sara-real-photo-frame {
   width: 100%;
   max-width: 230px;
@@ -4605,7 +4526,7 @@ body.vanta-fog-off .vanta-fog-container {
   border-radius: 10px;
   overflow: hidden;
   border: 2px solid #ff80bf;
-  box-shadow: 0 0 18px rgba(255, 42, 133, 0.4), inset 0 0 10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 16px rgba(255, 42, 133, 0.4);
   position: relative;
   z-index: 5;
   background: #05020a;
@@ -4617,21 +4538,8 @@ body.vanta-fog-off .vanta-fog-container {
   object-fit: cover;
   display: block;
   image-rendering: auto; /* Preserve natural photo smoothness & sharpness */
+  filter: none !important;
 }
-
-.photo-corner-deco {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 2px solid #ffec40;
-  pointer-events: none;
-  z-index: 6;
-}
-
-.photo-corner-deco.tl { top: 3px; left: 3px; border-right: none; border-bottom: none; }
-.photo-corner-deco.tr { top: 3px; right: 3px; border-left: none; border-bottom: none; }
-.photo-corner-deco.bl { bottom: 3px; left: 3px; border-right: none; border-top: none; }
-.photo-corner-deco.br { bottom: 3px; right: 3px; border-left: none; border-top: none; }
 
 /* Minimal Caption Footer */
 .sara-popup-footer {
