@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InAmigos Foundation — Task 1 Submission — Sara Dhoundiyal</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #eef2ff;
+      --success: #16a34a;
+      --success-light: #dcfce7;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #cbd5e1;
+      --card-bg: #ffffff;
+      --page-bg: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-main);
+      max-width: 940px;
+      margin: 30px auto;
+      padding: 0 20px;
+      background: var(--page-bg);
+      user-select: text !important;
+      -webkit-user-select: text !important;
+    }
+
+    /* Print & Quick Actions Bar */
+    .top-actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #ecfdf5;
+      border: 1.5px solid #10b981;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+    }
+
+    .tip-text {
+      color: #065f46;
+      font-size: 0.92rem;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .top-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #047857;
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .action-btn:hover {
+      background: #065f46;
+      transform: translateY(-1px);
+    }
+
+    .action-btn.secondary {
+      background: var(--primary);
+    }
+
+    .action-btn.secondary:hover {
+      background: var(--primary-hover);
+    }
+
+    .doc-card {
+      background: var(--card-bg);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 40px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    h1 {
+      color: #0f172a;
+      margin-top: 0;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 14px;
+    }
+
+    h2 {
+      color: #334155;
+      font-size: 1.35rem;
+      margin-top: 20px;
+      font-weight: 700;
+    }
+
+    h3 {
+      color: #475569;
+      font-size: 1.18rem;
+      margin-top: 30px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 8px;
+    }
+
+    h4 {
+      color: #1e293b;
+      font-size: 1.05rem;
+      margin-top: 28px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    /* Details Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 11px 16px;
+      text-align: left;
+      font-size: 0.96rem;
+      user-select: text !important;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: #0f172a;
+      width: 28%;
+    }
+
+    td {
+      background: #ffffff;
+      color: #1e293b;
+    }
+
+    .table-email-cell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    /* Links Section */
+    .link-box {
+      background: #f8fafc;
+      border: 1.5px dashed #6366f1;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 14px 0;
+      transition: background 0.15s, border-color 0.15s;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .link-box:hover {
+      background: #f5f7ff;
+      border-color: #4f46e5;
+    }
+
+    .link-title {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .sub-link {
+      color: #4f46e5;
+      font-weight: 600;
+      text-decoration: underline;
+      word-break: break-all;
+      font-size: 1.05rem;
+      user-select: text !important;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .sub-link:hover {
+      color: #312e81;
+    }
+
+    /* Copy Button */
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #ffffff;
+      color: #4338ca;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 11px;
+      border: 1.5px solid #c7d2fe;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease-in-out;
+      user-select: none;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .copy-btn.copied {
+      background: var(--success-light) !important;
+      border-color: var(--success) !important;
+      color: var(--success) !important;
+    }
+
+    /* Screenshots */
+    .preview-container {
+      margin: 10px 0 24px 0;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    img.preview {
+      width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: #090514;
+      display: block;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    img.linkedin-proof {
+      width: 100%;
+      max-width: 580px;
+      border: 2px solid #6366f1;
+      border-radius: 10px;
+      margin: 14px 0 20px 0;
+      display: block;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.15);
+    }
+
+    img.avatar-preview {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 3px solid #6366f1;
+      display: block;
+      margin: 10px 0 20px 0;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
+    }
+
+    .proof-note {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      color: #166534;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      margin: 14px 0;
+    }
+
+    /* Toast Notification for Copy */
+    .copy-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .copy-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Print Specific Rules */
+    @media print {
+      body {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+      }
+
+      .top-actions-bar,
+      .copy-btn,
+      .copy-toast {
+        display: none !important;
+      }
+
+      .doc-card {
+        border: none;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .link-box {
+        border: 1px solid #cbd5e1;
+        background: #ffffff;
+        padding: 10px 14px;
+        margin: 8px 0;
+      }
+
+      .sub-link {
+        color: #1d4ed8 !important;
+        text-decoration: underline !important;
+      }
+
+      a {
+        color: #1d4ed8 !important;
+        text-decoration: underline !important;
+      }
+
+      .preview-container,
+      .link-box,
+      table {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Instructions & Quick Actions Bar (Hidden when printed) -->
+  <div class="top-actions-bar">
+    <div class="tip-text">
+      💡 <b>Tip for PDF Export:</b> Press <b>Ctrl + P</b> (or click "Print / Save PDF"), and set Destination to <b>"Save as PDF"</b>. This preserves all clickable links and selectable text in the generated PDF file!
+    </div>
+    <div class="top-btns">
+      <button type="button" class="action-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <button type="button" class="action-btn secondary" onclick="copyAllSubmissionDetails()">📋 Copy All Details</button>
+    </div>
+  </div>
+
+  <div class="doc-card">
+    <h1>InAmigos Foundation — Assessment Submission</h1>
+    <h2>Task 1: Personal Profile Website (AI Based) 🌐</h2>
+
+    <h3>📌 Intern & Submission Details</h3>
+    <table>
+      <tr>
+        <th>Intern Name</th>
+        <td><b>Sara Dhoundiyal</b></td>
+      </tr>
+      <tr>
+        <th>Role</th>
+        <td>Web Development / AI Intern</td>
+      </tr>
+      <tr>
+        <th>Organization</th>
+        <td>InAmigos Foundation</td>
+      </tr>
+      <tr>
+        <th>Task Title</th>
+        <td>Assessment – Task 1: Personal Profile Website (AI Based)</td>
+      </tr>
+      <tr>
+        <th>Submission Deadline</th>
+        <td>5th September 2026 | 7:00 PM</td>
+      </tr>
+      <tr>
+        <th>Primary Contact</th>
+        <td>
+          <div class="table-email-cell">
+            <a href="mailto:saradhoundiyal296@gmail.com" class="sub-link">saradhoundiyal296@gmail.com</a>
+            <button type="button" class="copy-btn" onclick="copyToClipboard('saradhoundiyal296@gmail.com', this)" title="Copy email address">📋 Copy</button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Location</th>
+        <td>Delhi, India</td>
+      </tr>
+    </table>
+
+    <h3>
+      <span>🔗 Submission Links</span>
+      <button type="button" class="copy-btn" onclick="copyAllSubmissionLinks(this)" title="Copy all submission links to clipboard">📋 Copy All Links</button>
+    </h3>
+
+    <!-- Link 1: Live Website -->
+    <div class="link-box">
+      <div class="link-title">🌐 Live Portfolio Website Link:</div>
+      <div class="link-row">
+        <a href="https://portfolio-dg92.vercel.app/" target="_blank" rel="noopener noreferrer" class="sub-link" id="linkLive">https://portfolio-dg92.vercel.app/</a>
+        <button type="button" class="copy-btn" onclick="copyToClipboard('https://portfolio-dg92.vercel.app/', this)" title="Copy live website URL">📋 Copy Link</button>
+      </div>
+    </div>
+
+    <!-- Link 2: GitHub Repository -->
+    <div class="link-box">
+      <div class="link-title">🐙 GitHub Source Code Repository:</div>
+      <div class="link-row">
+        <a href="https://github.com/Sasha-Mx/Portfolio" target="_blank" rel="noopener noreferrer" class="sub-link" id="linkGithub">https://github.com/Sasha-Mx/Portfolio</a>
+        <button type="button" class="copy-btn" onclick="copyToClipboard('https://github.com/Sasha-Mx/Portfolio', this)" title="Copy GitHub repository URL">📋 Copy Link</button>
+      </div>
+    </div>
+
+    <!-- Link 3: LinkedIn Post -->
+    <div class="link-box">
+      <div class="link-title">💼 Published LinkedIn Post Link:</div>
+      <div class="link-row">
+        <a href="https://lnkd.in/p/gkCRP8wX" target="_blank" rel="noopener noreferrer" class="sub-link" id="linkLinkedin">https://lnkd.in/p/gkCRP8wX</a>
+        <button type="button" class="copy-btn" onclick="copyToClipboard('https://lnkd.in/p/gkCRP8wX', this)" title="Copy LinkedIn post URL">📋 Copy Link</button>
+      </div>
+    </div>
+
+    <h3>📸 Portfolio Application Screenshots</h3>
+
+    <div class="preview-container">
+      <h4>1. Live Hero Section & Atmospheric Engine (Vercel Live)</h4>
+      <img src="screenshots/01_hero_live.png" class="preview" alt="Live Hero Section">
+    </div>
+
+    <div class="preview-container">
+      <h4>2. Interactive Nintendo 3DS Dual-Screen Hardware Console</h4>
+      <img src="screenshots/02_nintendo_3ds_console.png" class="preview" alt="Nintendo 3DS Hardware Console">
+    </div>
+
+    <div class="preview-container">
+      <h4>3. Nintendo 3DS Interactive Stats Matrix & OS Windows</h4>
+      <img src="screenshots/03_3ds_stats_matrix.png" class="preview" alt="Nintendo 3DS Stats Matrix">
+    </div>
+
+    <div class="preview-container">
+      <h4>4. 16-Bit RPG Adventure Overworld Map & Player HUD</h4>
+      <img src="screenshots/04_rpg_world_map.png" class="preview" alt="RPG Adventure World Map">
+    </div>
+
+    <div class="preview-container">
+      <h4>5. "Choose Your Developer!" Arcade Fighter Select Cabinet</h4>
+      <img src="screenshots/05_developer_select_cabinet.png" class="preview" alt="Developer Select Cabinet">
+    </div>
+
+    <div class="preview-container">
+      <h4>6. Sara Dhoundiyal — Animated Gamified Character Avatar</h4>
+      <img src="screenshots/06_sara_gamified_avatar.jpg" class="avatar-preview" alt="Sara Animated Gamified Avatar">
+    </div>
+
+    <div class="preview-container">
+      <h3>📱 LinkedIn Submission & Social Sharing Proof</h3>
+      <div class="proof-note">
+        ✅ <b>Published & Verified on LinkedIn</b>: Tagged <b>@InAmigos Foundation (IAF)</b> with live website link and interactive project showcase.
+      </div>
+      <img src="screenshots/07_linkedin_post_proof.png" class="linkedin-proof" alt="LinkedIn Post Proof">
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="copy-toast" id="copyToast">
+    <span>✅</span>
+    <span id="toastText">Link copied to clipboard!</span>
+  </div>
+
+  <script>
+    function showToast(message) {
+      const toast = document.getElementById('copyToast');
+      const text = document.getElementById('toastText');
+      if (!toast || !text) return;
+      text.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2400);
+    }
+
+    function copyToClipboard(text, btnElement) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          onCopySuccess(btnElement, text);
+        }).catch(() => {
+          fallbackCopy(text, btnElement);
+        });
+      } else {
+        fallbackCopy(text, btnElement);
+      }
+    }
+
+    function fallbackCopy(text, btnElement) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        onCopySuccess(btnElement, text);
+      } catch (err) {
+        showToast('Failed to copy. Please select and copy manually.');
+      }
+      document.body.removeChild(textArea);
+    }
+
+    function onCopySuccess(btnElement, text) {
+      showToast('Copied: ' + text);
+      if (btnElement) {
+        const origHTML = btnElement.innerHTML;
+        btnElement.innerHTML = '✅ Copied!';
+        btnElement.classList.add('copied');
+        setTimeout(() => {
+          btnElement.innerHTML = origHTML;
+          btnElement.classList.remove('copied');
+        }, 2000);
+      }
+    }
+
+    function copyAllSubmissionLinks(btnElement) {
+      const allLinks = [
+        'Live Portfolio Website: https://portfolio-dg92.vercel.app/',
+        'GitHub Repository: https://github.com/Sasha-Mx/Portfolio',
+        'LinkedIn Post: https://lnkd.in/p/gkCRP8wX'
+      ].join('\n');
+      copyToClipboard(allLinks, btnElement);
+    }
+
+    function copyAllSubmissionDetails() {
+      const details = [
+        'InAmigos Foundation — Task 1 Submission',
+        'Intern Name: Sara Dhoundiyal',
+        'Role: Web Development / AI Intern',
+        'Task Title: Assessment – Task 1: Personal Profile Website (AI Based)',
+        'Primary Contact: saradhoundiyal296@gmail.com',
+        '',
+        '--- Submission Links ---',
+        'Live Portfolio: https://portfolio-dg92.vercel.app/',
+        'GitHub Repo: https://github.com/Sasha-Mx/Portfolio',
+        'LinkedIn Post: https://lnkd.in/p/gkCRP8wX'
+      ].join('\n');
+      copyToClipboard(details, null);
+    }
+  </script>
+</body>
+</html>
