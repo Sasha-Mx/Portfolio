@@ -447,6 +447,48 @@
     if (e.key === 'Escape') closeModal();
   });
 
+  // Resume Modal Viewer (Surfaces Official PDF Resume)
+  const resumeModal = document.getElementById('resumeModal');
+  const resumeModalBackdrop = document.getElementById('resumeModalBackdrop');
+  const resumeCloseBtn = document.getElementById('resumeCloseBtn');
+  const resumeCloseDot = document.getElementById('resumeCloseDot');
+  const viewResumeBtn = document.getElementById('viewResumeBtn');
+
+  function openResumeModal(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!resumeModal) return;
+    resumeModal.classList.add('active');
+    resumeModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    playSound('coin');
+  }
+
+  function closeResumeModal() {
+    if (!resumeModal) return;
+    resumeModal.classList.remove('active');
+    resumeModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    playSound('bleep');
+  }
+
+  if (viewResumeBtn) {
+    viewResumeBtn.addEventListener('click', openResumeModal);
+  }
+
+  document.querySelectorAll('.resume-trigger').forEach((btn) => {
+    btn.addEventListener('click', openResumeModal);
+  });
+
+  if (resumeCloseBtn) resumeCloseBtn.addEventListener('click', closeResumeModal);
+  if (resumeCloseDot) resumeCloseDot.addEventListener('click', closeResumeModal);
+  if (resumeModalBackdrop) resumeModalBackdrop.addEventListener('click', closeResumeModal);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && resumeModal && resumeModal.classList.contains('active')) {
+      closeResumeModal();
+    }
+  });
+
   // ==========================================================================
   // 6. PLATFORMER MYSTERY BLOCKS & COIN COUNTER
   // ==========================================================================
@@ -557,124 +599,433 @@
   }
 
   // ==========================================================================
-  // 8. ARCADE DEVELOPER CHARACTER SELECT (Reference 2)
+  // 8. CHOOSE YOUR DOMAIN ARCADE SELECTION (Redesigned Non-Repetitive & Icon Badges)
   // ==========================================================================
-  const specData = {
-    aiml: {
-      title: 'AI/ML ENGINEER & RESEARCHER',
-      js: 8,
-      py: 10,
-      react: 8,
-      creativity: 10,
-      coffee: 8
-    },
+  const domainData = {
     fullstack: {
-      title: 'FULL-STACK CRAFTSWOMAN (REACT & NODE)',
-      js: 10,
-      py: 8,
-      react: 10,
-      creativity: 9,
-      coffee: 7
+      name: 'FULL-STACK DEVELOPMENT',
+      pillName: 'EQUIPPED: FULL-STACK',
+      themeClass: 'pink-equipped',
+      tagline: '// ACTIVE DOMAIN: FULL-STACK ARCHITECTURE & APPS',
+      stack: [
+        { name: 'Next.js', icon: '▲' },
+        { name: 'React', icon: '⚛️' },
+        { name: 'Node.js', icon: '🟢' },
+        { name: 'Bootstrap', icon: '🅱️' },
+        { name: 'MongoDB', icon: '🍃' },
+        { name: 'MySQL', icon: '🐬' },
+        { name: 'JWT', icon: '🔑' },
+        { name: 'Git & GitHub', icon: '🐙' }
+      ]
     },
-    transit: {
-      title: 'SMART MOBILITY LEAD (ROUTEIQ)',
-      js: 9,
-      py: 8,
-      react: 9,
-      creativity: 10,
-      coffee: 8
+    java: {
+      name: 'JAVA DEVELOPMENT',
+      pillName: 'EQUIPPED: JAVA DEV',
+      themeClass: 'blue-equipped',
+      tagline: '// ACTIVE DOMAIN: DSA & SPRING BOOT BACKEND',
+      stack: [
+        { name: 'Java', icon: '☕' },
+        { name: 'Spring Boot', icon: '🌱' },
+        { name: 'DSA', icon: '🧩' },
+        { name: 'REST APIs', icon: '⚡' },
+        { name: 'JWT', icon: '🔑' },
+        { name: 'MySQL', icon: '🐬' },
+        { name: 'OOP', icon: '📦' },
+        { name: 'Git & GitHub', icon: '🐙' }
+      ]
     },
-    fintech: {
-      title: 'FINTECH INTELLIGENCE (ET PULSE)',
-      js: 8,
-      py: 9,
-      react: 9,
-      creativity: 9,
-      coffee: 8
+    cybersecurity: {
+      name: 'CYBERSECURITY EXPLORATION',
+      pillName: 'EQUIPPED: CYBERSEC',
+      themeClass: 'cyan-equipped',
+      tagline: '// ACTIVE DOMAIN: DEFENSIVE SECURITY & AUTH PROTOCOLS',
+      stack: [
+        { name: 'Web Security', icon: '🛡️' },
+        { name: 'Authentication', icon: '🔐' },
+        { name: 'JWT', icon: '🔑' },
+        { name: 'OWASP Basics', icon: '🎯' },
+        { name: 'Secure APIs', icon: '🔒' },
+        { name: 'Network Basics', icon: '🌐' },
+        { name: 'Linux', icon: '🐧' },
+        { name: 'Git & GitHub', icon: '🐙' }
+      ]
     },
-    uiux: {
-      title: 'UI/UX & MOTION DESIGNER',
-      js: 8,
-      py: 7,
-      react: 9,
-      creativity: 10,
-      coffee: 6
-    },
-    hackathon: {
-      title: 'IIIT & IISC HACKATHON GLADIATOR',
-      js: 9,
-      py: 9,
-      react: 10,
-      creativity: 10,
-      coffee: 10
+    moreprojects: {
+      name: 'MORE INVENTORY',
+      pillName: 'EQUIPPED: INVENTORY (LEARNER)',
+      themeClass: 'purple-equipped',
+      tagline: '// ACTIVE DOMAIN: GEOSPATIAL & AI/ML LEARNING IN PROGRESS',
+      stack: [
+        { name: 'Leaflet', icon: '🗺️', isLearner: false },
+        { name: 'Python', icon: '🐍', isLearner: false },
+        { name: 'Intro to ML', icon: '🌱', isLearner: true },
+        { name: 'NLP', icon: '💬', isLearner: true },
+        { name: 'TensorFlow', icon: '🧠', isLearner: true },
+        { name: 'Pandas', icon: '🐼', isLearner: true },
+        { name: 'NumPy', icon: '🔢', isLearner: true },
+        { name: 'Various Tech', icon: '🛠️', isLearner: false }
+      ]
     }
   };
 
-  const devSpecCards = document.querySelectorAll('.dev-spec-card');
-  const devSpecTitle = document.getElementById('devSpecTitle');
-  const statJsVal = document.getElementById('statJsVal');
-  const statPyVal = document.getElementById('statPyVal');
-  const statReactVal = document.getElementById('statReactVal');
-  const statCreativityVal = document.getElementById('statCreativityVal');
-  const statCoffeeVal = document.getElementById('statCoffeeVal');
+  const domainCards = document.querySelectorAll('.domain-card');
+  const currentDomainStack = document.getElementById('currentDomainStack');
+  const techEquippedPill = document.getElementById('techEquippedPill');
+  const activeDomainSub = document.getElementById('activeDomainSub');
 
-  function updateSegmentedBar(barId, activeCount) {
-    const bar = document.getElementById(barId);
-    if (!bar) return;
-    const segments = bar.querySelectorAll('.seg');
-    segments.forEach((seg, i) => {
-      seg.classList.toggle('active', i < activeCount);
-    });
-  }
+  function setDomain(domainKey) {
+    const domain = domainData[domainKey];
+    if (!domain) return;
 
-  function setDeveloperSpec(specKey) {
-    const data = specData[specKey];
-    if (!data) return;
-
-    // Update active card
-    devSpecCards.forEach((card) => {
-      card.classList.toggle('active', card.dataset.spec === specKey);
+    domainCards.forEach((card) => {
+      const isTarget = card.dataset.domain === domainKey;
+      card.classList.toggle('active', isTarget);
+      const statusPill = card.querySelector('.card-status-pill');
+      if (statusPill) {
+        if (isTarget) {
+          statusPill.textContent = 'EQUIPPED ✦';
+          statusPill.classList.remove('select-prompt');
+        } else {
+          statusPill.textContent = 'SELECT ➔';
+          statusPill.classList.add('select-prompt');
+        }
+      }
     });
 
-    // Update title
-    if (devSpecTitle) devSpecTitle.textContent = data.title;
+    if (techEquippedPill) {
+      techEquippedPill.textContent = domain.pillName;
+      techEquippedPill.className = `tech-equipped-pill ${domain.themeClass}`;
+    }
 
-    // Update numeric values
-    if (statJsVal) statJsVal.textContent = `${data.js}/10`;
-    if (statPyVal) statPyVal.textContent = `${data.py}/10`;
-    if (statReactVal) statReactVal.textContent = `${data.react}/10`;
-    if (statCreativityVal) statCreativityVal.textContent = `${data.creativity}/10`;
-    if (statCoffeeVal) statCoffeeVal.textContent = `${data.coffee}/10`;
+    if (activeDomainSub) {
+      activeDomainSub.textContent = domain.tagline;
+    }
 
-    // Update LED bar segments
-    updateSegmentedBar('statJsBar', data.js);
-    updateSegmentedBar('statPyBar', data.py);
-    updateSegmentedBar('statReactBar', data.react);
-    updateSegmentedBar('statCreativityBar', data.creativity);
-    updateSegmentedBar('statCoffeeBar', data.coffee);
+    if (currentDomainStack) {
+      currentDomainStack.innerHTML = domain.stack
+        .map((tech) => `
+          <div class="stack-badge ${tech.isLearner ? 'learner-badge' : ''}">
+            <span class="badge-icon">${tech.icon}</span>
+            <span class="badge-text">${tech.name}</span>
+            ${tech.isLearner ? '<span class="badge-sub-pill">LEARNING</span>' : ''}
+          </div>
+        `)
+        .join('');
+    }
 
-    // Sync with 3DS Console
-    if (typeof set3DSScreen === 'function') {
-      set3DSScreen('viewStats');
+    if (typeof playSound === 'function') {
+      playSound('bleep');
     }
   }
 
-  devSpecCards.forEach((card) => {
+  domainCards.forEach((card) => {
     card.addEventListener('click', () => {
-      const specKey = card.dataset.spec;
-      setDeveloperSpec(specKey);
+      const domainKey = card.dataset.domain;
+      setDomain(domainKey);
     });
   });
 
-  // Secret Cave Easter Egg in World Map
+  // ==========================================================================
+  // 8.5 SECRET CAVE DUNGEON SANCTUARY & BOSS COMBAT ENGINE
+  // ==========================================================================
+  function burstPixelConfetti(originX = window.innerWidth / 2, originY = window.innerHeight / 2, count = 35) {
+    const colors = ['#ffd000', '#ff2a85', '#00ff88', '#00e5ff', '#ff80bf', '#a594f9'];
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const size = Math.floor(Math.random() * 8 + 6);
+      p.style.position = 'fixed';
+      p.style.left = `${originX}px`;
+      p.style.top = `${originY}px`;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.backgroundColor = color;
+      p.style.border = '1px solid #000';
+      p.style.zIndex = '999999';
+      p.style.pointerEvents = 'none';
+      p.style.borderRadius = Math.random() > 0.5 ? '2px' : '0px';
+      document.body.appendChild(p);
+
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = Math.random() * 220 + 80;
+      const vx = Math.cos(angle) * velocity;
+      const vy = Math.sin(angle) * velocity - 120;
+      const rot = Math.random() * 720 - 360;
+
+      if (p.animate) {
+        p.animate([
+          { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+          { transform: `translate(${vx}px, ${vy + 260}px) rotate(${rot}deg)`, opacity: 0 }
+        ], {
+          duration: Math.random() * 500 + 750,
+          easing: 'cubic-bezier(0.25, 1, 0.5, 1)'
+        }).onfinish = () => p.remove();
+      } else {
+        setTimeout(() => p.remove(), 800);
+      }
+    }
+  }
+
   const secretCaveBtn = document.getElementById('secretCaveBtn');
-  if (secretCaveBtn) {
-    secretCaveBtn.addEventListener('click', () => {
+  const secretCaveModal = document.getElementById('secretCaveModal');
+  const caveModalBackdrop = document.getElementById('caveModalBackdrop');
+  const caveCloseBtn = document.getElementById('caveCloseBtn');
+  const caveCloseDot = document.getElementById('caveCloseDot');
+  const exitCaveBtn = document.getElementById('exitCaveBtn');
+  let caveFirstVisit = true;
+
+  function openSecretCaveModal() {
+    if (!secretCaveModal) return;
+    secretCaveModal.classList.add('active');
+    secretCaveModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    triggerSound('powerup');
+
+    if (caveFirstVisit) {
+      caveFirstVisit = false;
       coinScore += 200;
       if (coinCounter) {
         coinCounter.textContent = coinScore.toString().padStart(2, '0');
       }
-      showToast('🗝️ SECRET BOSS CAVE DISCOVERED: +200 COINS AWARDED!');
+      showToast('🗝️ SECRET DEV CAVERN UNLOCKED: +200 EXPLORATION COINS!');
+      burstPixelConfetti(window.innerWidth / 2, window.innerHeight * 0.35, 30);
+    }
+  }
+
+  function closeSecretCaveModal() {
+    if (!secretCaveModal) return;
+    secretCaveModal.classList.remove('active');
+    secretCaveModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    triggerSound('bleep');
+  }
+
+  if (secretCaveBtn) {
+    secretCaveBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openSecretCaveModal();
+    });
+  }
+
+  if (caveCloseBtn) caveCloseBtn.addEventListener('click', closeSecretCaveModal);
+  if (caveCloseDot) caveCloseDot.addEventListener('click', closeSecretCaveModal);
+  if (caveModalBackdrop) caveModalBackdrop.addEventListener('click', closeSecretCaveModal);
+  if (exitCaveBtn) exitCaveBtn.addEventListener('click', closeSecretCaveModal);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && secretCaveModal && secretCaveModal.classList.contains('active')) {
+      closeSecretCaveModal();
+    }
+  });
+
+  // Chest 1: Caffeine Elixir
+  const openChestBtn1 = document.getElementById('openChestBtn1');
+  const caveChest1 = document.getElementById('caveChest1');
+  const chestIcon1 = document.getElementById('chestIcon1');
+  const chestLoot1 = document.getElementById('chestLoot1');
+
+  if (openChestBtn1 && caveChest1) {
+    openChestBtn1.addEventListener('click', () => {
+      if (caveChest1.getAttribute('data-opened') === 'true') return;
+      caveChest1.setAttribute('data-opened', 'true');
+      caveChest1.classList.add('opened');
+      if (chestIcon1) chestIcon1.textContent = '☕';
+      if (chestLoot1) chestLoot1.classList.remove('hidden');
+      openChestBtn1.disabled = true;
+      openChestBtn1.textContent = '✅ CLAIMED';
+      openChestBtn1.style.opacity = '0.7';
+
+      coinScore += 300;
+      if (coinCounter) coinCounter.textContent = coinScore.toString().padStart(2, '0');
+      triggerSound('coin');
+      showToast('☕ CAFFEINE ELIXIR UNLOCKED! +300 COINS & NPE IMMUNITY!');
+      const rect = caveChest1.getBoundingClientRect();
+      burstPixelConfetti(rect.left + rect.width / 2, rect.top + 30, 25);
+    });
+  }
+
+  // Chest 2: Forbidden Konami Grimoire
+  const openChestBtn2 = document.getElementById('openChestBtn2');
+  const caveChest2 = document.getElementById('caveChest2');
+  const chestIcon2 = document.getElementById('chestIcon2');
+  const chestLoot2 = document.getElementById('chestLoot2');
+  const activateGodModeBtn = document.getElementById('activateGodModeBtn');
+
+  if (openChestBtn2 && caveChest2) {
+    openChestBtn2.addEventListener('click', () => {
+      if (caveChest2.getAttribute('data-opened') === 'true') return;
+      caveChest2.setAttribute('data-opened', 'true');
+      caveChest2.classList.add('opened');
+      if (chestIcon2) chestIcon2.textContent = '📖';
+      if (chestLoot2) chestLoot2.classList.remove('hidden');
+      openChestBtn2.disabled = true;
+      openChestBtn2.textContent = '✅ DECRYPTED';
+      openChestBtn2.style.opacity = '0.7';
+
+      coinScore += 200;
+      if (coinCounter) coinCounter.textContent = coinScore.toString().padStart(2, '0');
+      triggerSound('coin');
+      showToast('📜 ANCIENT KONAMI GRIMOIRE DECRYPTED!');
+      const rect = caveChest2.getBoundingClientRect();
+      burstPixelConfetti(rect.left + rect.width / 2, rect.top + 30, 25);
+    });
+  }
+
+  if (activateGodModeBtn) {
+    activateGodModeBtn.addEventListener('click', () => {
+      triggerSound('powerup');
+      coinScore += 500;
+      if (coinCounter) coinCounter.textContent = coinScore.toString().padStart(2, '0');
+      showToast('⚡ RETRO GOD MODE ACTIVATED! +500 COINS!');
+      burstPixelConfetti(window.innerWidth / 2, window.innerHeight / 2, 60);
+    });
+  }
+
+  // Chest 3: VIP Pass & Fast Travel
+  const openChestBtn3 = document.getElementById('openChestBtn3');
+  const caveChest3 = document.getElementById('caveChest3');
+  const chestIcon3 = document.getElementById('chestIcon3');
+  const chestLoot3 = document.getElementById('chestLoot3');
+  const caveOpenResumeBtn = document.getElementById('caveOpenResumeBtn');
+  const caveFastContactBtn = document.getElementById('caveFastContactBtn');
+
+  if (openChestBtn3 && caveChest3) {
+    openChestBtn3.addEventListener('click', () => {
+      if (caveChest3.getAttribute('data-opened') === 'true') return;
+      caveChest3.setAttribute('data-opened', 'true');
+      caveChest3.classList.add('opened');
+      if (chestIcon3) chestIcon3.textContent = '👑';
+      if (chestLoot3) chestLoot3.classList.remove('hidden');
+      openChestBtn3.disabled = true;
+      openChestBtn3.textContent = '✅ UNLOCKED';
+      openChestBtn3.style.opacity = '0.7';
+
+      coinScore += 300;
+      if (coinCounter) coinCounter.textContent = coinScore.toString().padStart(2, '0');
+      triggerSound('powerup');
+      showToast('🌟 VIP ACCESS GRANTED: FAST-TRAVEL UNLOCKED!');
+      const rect = caveChest3.getBoundingClientRect();
+      burstPixelConfetti(rect.left + rect.width / 2, rect.top + 30, 25);
+    });
+  }
+
+  if (caveOpenResumeBtn) {
+    caveOpenResumeBtn.addEventListener('click', () => {
+      closeSecretCaveModal();
+      if (typeof openResumeModal === 'function') {
+        openResumeModal();
+      } else {
+        const resumeModal = document.getElementById('resumeModal');
+        if (resumeModal) {
+          resumeModal.classList.add('active');
+          resumeModal.setAttribute('aria-hidden', 'false');
+        }
+      }
+    });
+  }
+
+  if (caveFastContactBtn) {
+    caveFastContactBtn.addEventListener('click', () => {
+      closeSecretCaveModal();
+    });
+  }
+
+  // Boss Battle Combat Engine: Merge Conflict Demon
+  let bossHp = 100;
+  const maxBossHp = 100;
+  let bossDefeated = false;
+  const bossHpFill = document.getElementById('bossHpFill');
+  const bossHpText = document.getElementById('bossHpText');
+  const combatLog = document.getElementById('combatLog');
+  const bossSprite = document.getElementById('bossSprite');
+  const bossVictoryBanner = document.getElementById('bossVictoryBanner');
+  const respawnBossBtn = document.getElementById('respawnBossBtn');
+  const btnGitOurs = document.getElementById('btnGitOurs');
+  const btnGitAbort = document.getElementById('btnGitAbort');
+  const btnGitForce = document.getElementById('btnGitForce');
+
+  function attackBoss(damage, attackName, logMsg) {
+    if (bossDefeated) return;
+    bossHp = Math.max(0, bossHp - damage);
+
+    if (bossHpFill) bossHpFill.style.width = `${(bossHp / maxBossHp) * 100}%`;
+    if (bossHpText) bossHpText.textContent = bossHp;
+
+    if (combatLog) {
+      combatLog.textContent = `> ${attackName}: ${logMsg} (-${damage} HP)`;
+      combatLog.style.color = '#ffec40';
+      setTimeout(() => {
+        if (combatLog) combatLog.style.color = '#00ffcc';
+      }, 300);
+    }
+
+    // Flash boss sprite on hit
+    if (bossSprite) {
+      bossSprite.style.transform = 'scale(0.88) rotate(-4deg)';
+      bossSprite.style.filter = 'brightness(2) drop-shadow(0 0 15px #ff0055)';
+      setTimeout(() => {
+        if (bossSprite) {
+          bossSprite.style.transform = '';
+          bossSprite.style.filter = '';
+        }
+      }, 150);
+    }
+
+    if (bossHp <= 0) {
+      bossDefeated = true;
+      triggerSound('powerup');
+      if (bossSprite) {
+        bossSprite.innerHTML = '<div style="font-size:2.8rem;">💀✨</div><div class="boss-tag">RESOLVED</div>';
+      }
+      if (combatLog) {
+        combatLog.textContent = '> VICTORY! Merge Conflict cleanly resolved. All tests pass on origin/main!';
+        combatLog.style.color = '#00ff88';
+      }
+      if (bossVictoryBanner) bossVictoryBanner.classList.remove('hidden');
+
+      coinScore += 1000;
+      if (coinCounter) coinCounter.textContent = coinScore.toString().padStart(2, '0');
+      showToast('🏆 CONFLICT DEMON SLAIN! +1,000 COINS & CONFLICT SLAYER TITLE!');
+      burstPixelConfetti(window.innerWidth / 2, window.innerHeight * 0.45, 70);
+    } else {
+      triggerSound('bleep');
+    }
+  }
+
+  if (btnGitOurs) {
+    btnGitOurs.addEventListener('click', () => {
+      attackBoss(25, 'git checkout --ours', 'Asserted clean incoming branch!');
+    });
+  }
+
+  if (btnGitAbort) {
+    btnGitAbort.addEventListener('click', () => {
+      attackBoss(35, 'git rebase --abort', 'Undid messy branch drift!');
+    });
+  }
+
+  if (btnGitForce) {
+    btnGitForce.addEventListener('click', () => {
+      attackBoss(50, 'git push --force', 'CRITICAL STRIKE! Overwrote conflict upstream!');
+    });
+  }
+
+  if (respawnBossBtn) {
+    respawnBossBtn.addEventListener('click', () => {
+      bossHp = maxBossHp;
+      bossDefeated = false;
+      if (bossHpFill) bossHpFill.style.width = '100%';
+      if (bossHpText) bossHpText.textContent = '100';
+      if (bossSprite) {
+        bossSprite.innerHTML = '<div class="boss-horns">👾</div><div class="boss-tag">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD vs main &gt;&gt;&gt;&gt;&gt;&gt;&gt;</div>';
+      }
+      if (combatLog) {
+        combatLog.textContent = '> The Merge Conflict Demon reappears with unmerged files! Choose your command:';
+        combatLog.style.color = '#00ffcc';
+      }
+      if (bossVictoryBanner) bossVictoryBanner.classList.add('hidden');
+      triggerSound('bleep');
+      showToast('🔄 BOSS RESPAWNED: READY FOR ROUND 2!');
     });
   }
 

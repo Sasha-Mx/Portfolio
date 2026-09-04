@@ -1,125 +1,124 @@
-# 🎮 2026 Retro 8-Bit Nintendo 3DS Portfolio — Sara Dhoundiyal
+# 🎮 Sara Dhoundiyal — Interactive Gamified Portfolio (2026)
 
-An ultra-polished, interactive, gamified personal profile & portfolio website built for the **InAmigos Foundation Assessment (Task 1: Personal Profile Website - AI Based)**.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-portfolio--dg92.vercel.app-ff2a85?style=for-the-badge&logo=vercel)](https://portfolio-dg92.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Sasha--Mx-00ff88?style=for-the-badge&logo=github)](https://github.com/Sasha-Mx)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Sara%20Dhoundiyal-00e5ff?style=for-the-badge&logo=linkedin)](https://linkedin.com)
+[![Status](https://img.shields.io/badge/Status-Completed%20%26%20Deployed-ffd000?style=for-the-badge)](https://portfolio-dg92.vercel.app/)
 
-👉 **Live Website**: [https://portfolio-dg92.vercel.app/](https://portfolio-dg92.vercel.app/)
+A retro-modern, gamified developer portfolio engineered by **Sara Dhoundiyal** (Full-Stack Developer • B.Tech IT, GGSIPU • CGPA: 9.18). 
 
----
-
-## 🌟 Highlights & Features
-
-1. **Playable 8-Bit Mini-Game ("Sara's Quest: Chasing Meow!")**:
-   - **Interactive Arcade Runner**: Click **`[ 🎮 PLAY: SARA CHASING MEOW ]`** to play an endless runner inside a retro arcade cabinet.
-   - **Physics & Gameplay**: Sara chases her companion cat Meow, dodging slimes and obstacles with single and double jumps while collecting gold coins!
-   - **Features**: Real-time score, high score saved in `localStorage`, Web Audio sound effects, and full touch support for mobile players.
-
-2. **Gamified Vanta.js-Inspired Atmospheric Engine**:
-   - **🕊️ Flocking 8-Bit Birds (Vanta Birds)**: Procedural boids simulation of flying pixel birds flapping across the sky, dynamically reacting to mouse cursor movement!
-   - **💫 Pulsing Celestial Halo (Vanta Halo)**: Radiant concentric 8-bit aura pulsating behind the hero title with rhythmic neon green, cyan, and magenta energy.
-   - **🌫️ Rolling Mystical Fog (Vanta Fog)**: Multi-depth horizontal drifting pixel mist along the bottom platforms.
-   - **Atmosphere Toggles**: On-screen control chips to toggle Birds, Fog, and Halo independently.
-
-3. **Retro 8-Bit Nintendo 3DS Aesthetic (Reference 1)**:
-   - **Dual-Screen Nintendo 3DS Hardware**: Modeled in hot pink with authentic dual screens, D-Pad, Circle Pad, and ABXY buttons.
-   - **Interactive Top Screen**: Switches dynamically between Portrait, Stats Matrix, Quests, and Trophies views when buttons or touch tabs are clicked.
-   - **Kawaii Retro OS Windows**: 90s-style pink/yellow floating pop-up windows detailing Profile, Weapons/Tech Stack, Experience, and Hackathon Boss Trophies.
-   - **Gaming HUD**: Features real-time XP level badge, Heart Health bar, Player 01 status, and crystal-clear `★ SARA.EXE ★` badge.
-
-4. **16-Bit Top-Down RPG Overworld ("Sara's World Map")**:
-   - Rustic wooden-framed adventure map with player HUD, radar mini-map, and interactive fast-travel signposts (`🏡 ABOUT ME`, `🔮 SKILLS`, `🌾 PROJECTS`, `🗼 CONTACT`, `🗝️ SECRET CAVE`).
-
-5. **Arcade Fighter "Choose Your Developer!" Select Cabinet (Reference 2)**:
-   - 6 selectable developer specializations (AI/ML, Full-Stack, Mobility, FinTech, Motion, Hackathon) with dynamic **10-segment glowing LED stat bars**.
-
-6. **3D Cover-Flow Project Cartridge Showcase (Reference 2 `gustavobatista.dev`)**:
-   - **Angled 3D Game Boxes**: Smooth 3D perspective slider (`preserve-3d`, `rotateY`, `scale`) featuring Sara's projects:
-     - 🚀 **Mentra.AI** (with live deployment link: [aimentra-three.vercel.app](https://aimentra-three.vercel.app/))
-     - 🚌 **RouteIQ** (AI Transit Companion with live GTFS & Leaflet maps)
-     - 📈 **ET Pulse** (Multilingual financial intelligence platform)
-     - 🧘 **MindOasis** (Mental wellness & AI support app)
-     - 🤝 **ArthSahay** (Conversational AI loan advisor)
-   - **Controls**: Arcade push buttons (◀ PREV / NEXT ▶), Keyboard Arrow Keys (`←` / `→`), click-to-center, and touch swipe on mobile.
-
-7. **Pure Web Audio API 8-Bit Synthesizer**:
-   - Genuine retro sound effects (Super Mario-style coin chimes, 8-bit blips, power-up arpeggios).
-   - 100% self-contained in JavaScript using browser native `AudioContext`—no external mp3 files required!
-   - On-screen `[SFX: ON/OFF]` and `[CRT: ON/OFF]` scanline toggles.
-
-8. **Mario-Style Interactive Platformer Footer**:
-   - Mystery Question Blocks (`?`) that play coin sounds and award `+100 PTS` on click!
-   - Warp pipe with rising piranha sprout.
-   - One-click copy email button with retro toast notification.
-   - Pre-filled transmission dispatch form.
-   - Secret **Konami Code** Easter Egg (`↑ ↑ ↓ ↓ ← → ← → B A`).
+Combining the nostalgia of the **Nintendo 3DS**, **16-bit RPG Overworld exploration**, **Arcade cabinets**, and a **3D perspective cover-flow project showcase**, this portfolio delivers an unforgettable, interactive journey through real-world full-stack web applications, Java systems, and creative engineering.
 
 ---
 
-## 🚀 How to Run Locally
+## 🌟 Key Highlights & Gameplay Systems
 
-### Option 1: Double-Click
-Simply double-click [`index.html`](file:///c:/Users/Sara/OneDrive/Desktop/Portfolio/index.html) in your file explorer to open it in any web browser (Chrome, Edge, Brave, Firefox).
+### 1. 🕹️ Dual-Screen Nintendo 3DS Console
+* **Interactive Hardware Replica**: Modeled in metallic hot-pink with authentic dual screens, clickable D-Pad, Circle Pad, Home, Select/Start, and ABXY buttons.
+* **Top Screen Display Matrix**: Switch dynamically across:
+  * **Avatar View**: Character profile portrait with level stats.
+  * **Stats Matrix**: Live visual stat bars for Frontend, Backend, and Core CS.
+  * **Quests**: Real-world internship & work experience logs.
+  * **Trophies**: Hackathon wins and competition awards (RBI Harbinger '26 Semi-Finalist, IIIT Bangalore 3rd Place, IISc Bangalore 3rd Place, EY Techathon Finalist).
 
-### Option 2: Local HTTP Server (Recommended)
-Open PowerShell or Terminal in this folder and run:
-```powershell
+### 2. 🗺️ 16-Bit RPG Overworld ("Sara's World Map")
+* Interactive hand-crafted retro map featuring real-time HUD, radar scanner, and fast-travel signposts:
+  * `🏡 ABOUT ME` &rarr; Player Residence & Level 01
+  * `🔮 SKILLS` &rarr; Weapon & Arcana Tower
+  * `⚙️ PROJECTS` &rarr; Missions Workshop
+  * `🗼 CONTACT` &rarr; Coastal Signal Lighthouse
+  * `🗝️ SECRET CAVE` &rarr; Hidden Subterranean Dungeon
+
+### 3. 🗝️ Secret Cavern Dev Dungeon
+* Hidden developer sanctuary discovered via the Overworld map.
+* **Chamber I (Ancient Loot Chests)**:
+  * **Chest 01 — Caffeine Elixir**: +300 Coins & immunity to `NullPointerException`.
+  * **Chest 02 — Forbidden Grimoire**: Decrypts the classic arcade Konami cheat code with an instant God-Mode particle trigger.
+  * **Chest 03 — Golden Royal Scroll**: VIP fast-travel pass to view/download Sara's Official Resume PDF or jump to the Contact Terminal.
+* **Chamber II (Mini Boss Encounter: Merge Conflict Demon)**:
+  * Interactive battle clicker with live HP bar (`100/100 HP`).
+  * Strike commands: `git checkout --ours` (-25 DMG), `git rebase --abort` (-35 DMG), and `git push --force` (-50 DMG Critical).
+  * Defeating the boss awards +1,000 Coins, confetti celebration, and unlocks the **Conflict Slayer** title!
+
+### 4. 👾 Arcade Domain Select Cabinet
+* Interactive CRT cabinet inspired by retro character select screens.
+* Explore specialized domains:
+  * **Full-Stack Development**: Modern web applications, React, Node.js, MySQL, Bootstrap.
+  * **Java Development**: Data Structures & Algorithms, Object-Oriented Design, Spring Boot.
+  * **Cybersecurity Exploration**: Web application defense, OWASP Top 10, authentication protocols.
+  * **More Inventory**: Geospatial tools (Leaflet), Python, ML & data exploration.
+* **Player Profile Dossier**: Real profile portrait, player rank (`PLAYER 01`), and real-time LED stat progress bars.
+
+### 5. 📦 3D Cover-Flow Cartridge Project Showcase
+* Pure CSS 3D perspective slider (`preserve-3d`, `rotateY`, `scale`) inspired by modern gaming carousels:
+  * 🚀 **Mentra.AI**: Agentic career guidance coach with skill-gap analysis & mock interview UI ([Live App](https://aimentra-three.vercel.app/) • [GitHub](https://github.com/Sasha-Mx/Mentra.AI))
+  * 🐾 **PawCare**: Pet health management & appointment booking system ([Live App](https://paw-care-zeta.vercel.app) • [GitHub](https://github.com/Sasha-Mx/PawCare))
+  * 🧘 **MinDOasis**: Mental wellness companion with mindful journaling ([Live App](https://mindoasis-proto.vercel.app) • [GitHub](https://github.com/Sasha-Mx/MinDOasis))
+  * 🚌 **RouteIQ**: Delhi transit companion with live tracking & route optimization ([Live App](https://route-iq-delta.vercel.app) • [GitHub](https://github.com/Sasha-Mx/RouteIQ))
+  * 🤝 **ArthSahay**: Conversational financial intelligence loan assistant ([Live App](https://arth-sahay-sasha-mxs-projects.vercel.app) • [GitHub](https://github.com/Sasha-Mx/ArthSahay))
+* Controls: Arcade push-buttons (◀ PREV / NEXT ▶), keyboard arrow navigation (`←` / `→`), and touch-swipe on mobile.
+
+### 6. 🎮 Playable Mini-Game: "Sara Chasing Meow!"
+* Canvas-based retro endless runner built right into an arcade modal.
+* Control Sara to chase her companion cat Meow, dodging slimes and brick obstacles using single and double jumps while collecting gold coins.
+* Features high score persistence via `localStorage`, dynamic speed escalation, and mobile tap-to-jump controls.
+
+### 7. 🔊 Self-Contained Web Audio 8-Bit Synthesizer
+* Zero external audio files required! 100% synthesized through native browser `AudioContext`.
+* Produces authentic square/triangle wave blips, Super Mario-style two-tone coin chimes, and ascending power-up arpeggios.
+* Toggleable with on-screen `[SFX: ON/OFF]` and scanline `[CRT: ON/OFF]` controls.
+
+### 8. 📄 Official Resume PDF Modal
+* Clean in-app PDF surface with instant view, download (`📥 DOWNLOAD PDF`), and external tab viewer (`↗️ OPEN FULL TAB`).
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+| Layer | Technologies |
+| :--- | :--- |
+| **Core** | Semantic HTML5, Vanilla JavaScript (ES6+), Web Audio API, HTML5 2D Canvas |
+| **Styling** | Vanilla CSS3, CSS 3D Transforms (`perspective`, `rotateY`), Flexbox, CSS Grid |
+| **Typography** | Google Fonts (`Press Start 2P`, `Silkscreen`, `VT323`) |
+| **Performance** | Zero heavyweight frameworks, instant load times, zero audio asset overhead |
+| **VFX Engine** | Procedural boids simulation (flying 8-bit birds), particle stardust, CRT scanline overlay |
+
+---
+
+## 💻 Running Locally
+
+No complicated build pipelines or heavy node modules needed. Simply clone and run!
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Sasha-Mx/Portfolio.git
+
+# 2. Navigate to the project directory
+cd Portfolio
+
+# 3. Start a local server (any of the following options)
+# Option A: Python 3
 python -m http.server 8080
+
+# Option B: Node.js (npx)
+npx serve .
+
+# Option C: Double-click index.html to view directly in your browser!
 ```
-Then visit: **`http://localhost:8080`**
+
+Open your browser and navigate to **`http://localhost:8080`**.
 
 ---
 
-## 🌐 How to Publish Live in 60 Seconds (Free Live Link)
+## 📬 Connect with Sara Dhoundiyal
 
-### Method A: Deploy on Vercel (Instant & Free)
-1. Go to [vercel.com](https://vercel.com) and sign in with your GitHub account.
-2. Drag and drop the `Portfolio` folder directly into the Vercel dashboard, OR import your GitHub repository.
-3. Click **Deploy**. In ~15 seconds, you will receive your live link: `https://sara-portfolio-xxxx.vercel.app`.
-
-### Method B: Deploy on Netlify (Drag & Drop)
-1. Go to [app.netlify.com/drop](https://app.netlify.com/drop).
-2. Drag and drop the `Portfolio` folder into the upload area.
-3. Your live link is instantly generated: `https://sara-portfolio.netlify.app`.
-
-### Method C: Deploy on GitHub Pages
-1. Push this folder to a GitHub repository named `portfolio`.
-2. Go to repository **Settings** → **Pages**.
-3. Under **Branch**, select `main` and `/ (root)`, then click **Save**.
-4. Your site will be live at `https://<your-username>.github.io/portfolio/`.
+* **Portfolio**: [https://portfolio-dg92.vercel.app/](https://portfolio-dg92.vercel.app/)
+* **GitHub**: [github.com/Sasha-Mx](https://github.com/Sasha-Mx)
+* **Email**: [saradhoundiyal296@gmail.com](mailto:saradhoundiyal296@gmail.com)
+* **Education**: B.Tech Information Technology (2024–2028), GGSIPU (CGPA: 9.18)
 
 ---
 
-## 📋 InAmigos Foundation Submission Checklist (Deadline: Sept 5, 7 PM)
-
-- [x] **Name**: Sara Dhoundiyal
-- [x] **Introduction**: Highlighted in "Hello !!" window & 3DS console (B.Tech IT, CGPA 9.18, AI & Full Stack Developer)
-- [x] **Skills**: Weapons Mastery (React, Node, Python, AI/ML, MongoDB, Tailwind CSS)
-- [x] **Contact Details**: Direct email (`saradhoundiyal296@gmail.com`), LinkedIn, GitHub
-- [ ] **Live Link**: Deploy via Vercel/Netlify/GitHub Pages and copy the URL.
-- [ ] **Google Drive Folder**:
-  - Save the live website link in a text document or shortcut.
-  - Add screenshots of the website (Hero, 3DS Console, 3D Project Slider, Contact Terminal).
-  - Add the project source code zip.
-- [ ] **LinkedIn Post**: Share your portfolio live link and tag **InAmigos Foundation**.
-
----
-
-## 📱 Ready-to-Use LinkedIn Post Template
-
-```markdown
-🚀 Excited to share my new 2026 Gamified Retro 8-Bit Portfolio Website! 🎮
-
-As part of Assessment – Task 1 for the AI Web Development Internship at InAmigos Foundation, I built an interactive personal profile inspired by the iconic Nintendo 3DS and retro arcade aesthetics.
-
-✨ Key Highlights:
-• 🕹️ Interactive Nintendo 3DS console with dynamic screen switching & haptic feedback
-• 📦 3D Cover-Flow Game Cartridge project showcase (featuring Mentra.AI, RouteIQ, ET Pulse & more)
-• 🔊 Pure Web Audio API 8-bit chiptune sound synthesizer & toggleable CRT scanlines
-• 🪙 Interactive Mario-style platformer blocks with real-time scoring
-
-🌐 Live Website: [Insert your Vercel / Netlify / GitHub Pages link here]
-🐙 Source Code: https://github.com/saradhoundiyal
-
-Big thanks to InAmigos Foundation for this creative challenge!
-
-#WebDevelopment #UIUXDesign #InAmigosFoundation #Portfolio #AI #React #RetroGaming #FrontendDevelopment #BTechIT #Chiptune
-```
+<div align="center">
+  <sub>Engineered with 💜 retro gaming nostalgia & pure web tech by <strong>Sara Dhoundiyal</strong>.</sub>
+</div>
