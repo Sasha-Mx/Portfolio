@@ -185,14 +185,23 @@
           <img src="assets/world_map.jpg" alt="Sara's RPG Overworld Realm Map" class="world-map-img">
 
           <!-- Top-Left Player Status Box -->
-          <div class="map-player-hud">
+          <div class="map-player-hud sound-trigger clickable-player-hud" id="mapPlayerHudBtn" role="button" tabindex="0" title="Click to meet the real Sara!" aria-label="Meet the real Sara!">
             <img src="assets/sara_gamified_anime.jpg" alt="Sara Portrait" class="map-hud-avatar">
             <div class="map-hud-stats">
-              <div class="hud-stat-name">NAME: SARA</div>
+              <div class="hud-stat-name">NAME: SARA <span class="hud-click-hint">💬</span></div>
               <div class="hud-stat-lvl">LV 03 • FULL-STACK DEV</div>
               <div class="hud-stat-hp">HP: <span class="hp-hearts">♥♥♥♥♥</span></div>
             </div>
           </div>
+
+          <!-- Small Bouncing Sara Player Character on Map Path (Easter Egg Trigger) -->
+          <button type="button" class="map-sara-player-btn sound-trigger" data-sound="coin" id="mapSaraPlayerBtn" style="top: 60%; left: 22.5%;" title="Click to meet the real Sara!" aria-label="Click to meet the real Sara!">
+            <div class="sara-char-bounce">
+              <span class="sara-speech-bubble">ME! ✨</span>
+              <img src="assets/sara_gamified_anime.jpg" alt="Sara Player Character" class="sara-map-sprite">
+              <div class="sara-char-shadow"></div>
+            </div>
+          </button>
 
           <!-- Interactive Map Signpost Pins -->
           <!-- 1. Village Cottages -> About Sara -->
@@ -396,7 +405,7 @@
               <div class="domain-profile-panel">
                 <div class="profile-left-col">
                   <div class="domain-avatar-box">
-                    <img src="assets/sara_photo.jpg" alt="Sara Dhoundiyal" class="domain-avatar-img">
+                    <img src="assets/sara_gamified_anime.jpg" alt="Sara Dhoundiyal" class="domain-avatar-img">
                   </div>
                   <div class="domain-sara-exe-badge">♥ SARA.EXE</div>
                 </div>
@@ -1563,6 +1572,52 @@
             <span class="btn-text">⬅ EMERGE FROM CAVERN (RETURN TO OVERWORLD)</span>
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- MODAL: CUTE RETRO EASTER EGG — MEET THE REAL SARA         -->
+  <!-- ========================================================= -->
+  <div class="retro-modal sara-popup-modal" id="realSaraModal" aria-hidden="true" role="dialog" aria-label="Meet the real Sara">
+    <div class="modal-backdrop" id="saraModalBackdrop"></div>
+    <div class="sara-popup-card">
+      <!-- Subtle CRT scanline overlay -->
+      <div class="sara-popup-crt" aria-hidden="true"></div>
+
+      <!-- Floating Cute Pixel Decorations -->
+      <span class="cute-sparkle sp-1">✨</span>
+      <span class="cute-sparkle sp-2">⭐</span>
+      <span class="cute-sparkle sp-3">💖</span>
+      <span class="cute-sparkle sp-4">✦</span>
+
+      <!-- Tiny Pixel Companion Peeking -->
+      <div class="cute-mascot mascot-tl" title="Meow!">🐱</div>
+      <div class="cute-mascot mascot-br" title="Player 01">⭐</div>
+
+      <!-- Top Header Row -->
+      <div class="sara-popup-header">
+        <div class="sara-exe-pill">
+          <span class="heart-pulse">♡</span> SARA.EXE
+        </div>
+        <button type="button" class="sara-popup-close sound-trigger" data-sound="bleep" id="saraPopupCloseBtn" title="Close [ESC] / B BACK" aria-label="Close">
+          <span class="close-key-tag">B</span> ✕
+        </button>
+      </div>
+
+      <!-- Photo Frame (Preserves full sharpness, no alteration) -->
+      <div class="sara-real-photo-frame">
+        <img src="assets/sara_real.jpg" alt="Sara Dhoundiyal" class="sara-real-photo">
+        <div class="photo-corner-deco tl"></div>
+        <div class="photo-corner-deco tr"></div>
+        <div class="photo-corner-deco bl"></div>
+        <div class="photo-corner-deco br"></div>
+      </div>
+
+      <!-- Minimal Cute Caption -->
+      <div class="sara-popup-footer">
+        <p class="sara-popup-quote">"Hey, that's me!"</p>
+        <span class="sara-popup-subheart">♡ ✧ 🎮 ✧ ♡</span>
       </div>
     </div>
   </div>

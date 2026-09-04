@@ -1030,6 +1030,58 @@
   }
 
   // ==========================================================================
+  // 8.6 CUTE RETRO POPUP: "MEET THE REAL SARA" (World Map Easter Egg)
+  // ==========================================================================
+  const realSaraModal = document.getElementById('realSaraModal');
+  const saraModalBackdrop = document.getElementById('saraModalBackdrop');
+  const saraPopupCloseBtn = document.getElementById('saraPopupCloseBtn');
+  const mapSaraPlayerBtn = document.getElementById('mapSaraPlayerBtn');
+  const mapPlayerHudBtn = document.getElementById('mapPlayerHudBtn');
+
+  function openRealSaraPopup(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!realSaraModal) return;
+    realSaraModal.classList.add('active');
+    realSaraModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    triggerSound('coin');
+    burstPixelConfetti(window.innerWidth / 2, window.innerHeight / 2, 25);
+  }
+
+  function closeRealSaraPopup() {
+    if (!realSaraModal) return;
+    realSaraModal.classList.remove('active');
+    realSaraModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    triggerSound('bleep');
+  }
+
+  if (mapSaraPlayerBtn) {
+    mapSaraPlayerBtn.addEventListener('click', openRealSaraPopup);
+  }
+
+  if (mapPlayerHudBtn) {
+    mapPlayerHudBtn.addEventListener('click', openRealSaraPopup);
+    mapPlayerHudBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openRealSaraPopup();
+      }
+    });
+  }
+
+  if (saraPopupCloseBtn) saraPopupCloseBtn.addEventListener('click', closeRealSaraPopup);
+  if (saraModalBackdrop) saraModalBackdrop.addEventListener('click', closeRealSaraPopup);
+
+  window.addEventListener('keydown', (e) => {
+    if (realSaraModal && realSaraModal.classList.contains('active')) {
+      if (e.key === 'Escape' || e.key === 'b' || e.key === 'B') {
+        closeRealSaraPopup();
+      }
+    }
+  });
+
+  // ==========================================================================
   // 9. VIVID VANTA.JS ATMOSPHERIC ENGINE (Birds, Halo, Fog, Clouds)
   // ==========================================================================
   const vantaAtmosphereCanvas = document.getElementById('vantaAtmosphereCanvas') || document.getElementById('vantaBirdsCanvas');
