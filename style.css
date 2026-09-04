@@ -4350,22 +4350,88 @@ body.vanta-fog-off .vanta-fog-container {
   transform: scale(0.98);
 }
 
-.hud-click-hint {
-  font-size: 0.7rem;
-  margin-left: 4px;
-  animation: hintPulse 1.2s infinite alternate;
+/* Bouncing CLICK ME Invite Badge next to Name */
+.hud-stat-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffec40;
+  font-size: 0.65rem;
 }
 
-@keyframes hintPulse {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  100% { transform: scale(1.2); opacity: 1; }
+.hud-name-text {
+  color: #ffec40;
+  white-space: nowrap;
+}
+
+.hud-bouncing-invite {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #ff2a85;
+  color: #ffffff;
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid #000;
+  box-shadow: 0 0 10px rgba(255, 42, 133, 0.9), 1px 1px 0 #000;
+  animation: inviteBounce 0.65s infinite alternate ease-in-out;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@keyframes inviteBounce {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 8px rgba(255, 42, 133, 0.7), 1px 1px 0 #000;
+  }
+  100% {
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 0 18px rgba(255, 42, 133, 1), 1px 3px 0 #000;
+  }
+}
+
+.invite-icon {
+  font-size: 0.65rem;
+  display: inline-block;
+  animation: inviteIconPulse 1.4s infinite ease-in-out;
+}
+
+@keyframes inviteIconPulse {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-10deg) scale(1.15); }
+  75% { transform: rotate(10deg) scale(1.15); }
+}
+
+.invite-text {
+  color: #ffec40;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.clickable-player-hud:hover .hud-bouncing-invite {
+  background: #ff0055;
+  transform: translateY(-6px) scale(1.14);
+  box-shadow: 0 0 20px rgba(255, 0, 85, 1), 2px 4px 0 #000;
 }
 
 /* ==========================================================================
    CUTE RETRO POPUP CARD: "MEET THE REAL SARA"
    ========================================================================== */
 .sara-popup-modal {
-  z-index: 9998;
+  z-index: 100005 !important; /* Strictly higher than CRT overlay (z-index: 9999) */
+}
+
+/* Completely suppress CRT scanline overlay when Real Sara modal is open */
+body.sara-modal-open .crt-overlay,
+#crtOverlay.hide-for-modal {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .sara-popup-card {
@@ -4373,7 +4439,7 @@ body.vanta-fog-off .vanta-fog-container {
   z-index: 10;
   width: 90vw;
   max-width: 320px;
-  background: rgba(13, 9, 30, 0.95);
+  background: rgba(13, 9, 30, 0.96);
   border: 3px solid #ff2a85;
   border-radius: 14px;
   box-shadow: 
@@ -4400,57 +4466,6 @@ body.vanta-fog-off .vanta-fog-container {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
-}
-
-
-/* Cute Floating Sparkles & Mascots */
-.cute-sparkle {
-  position: absolute;
-  pointer-events: none;
-  z-index: 3;
-  animation: floatSparkle 2s infinite alternate ease-in-out;
-}
-
-.sp-1 { top: 12px; left: 14px; font-size: 0.9rem; animation-delay: 0s; }
-.sp-2 { top: 18px; right: 48px; font-size: 0.8rem; animation-delay: 0.4s; }
-.sp-3 { bottom: 42px; left: 12px; font-size: 0.85rem; animation-delay: 0.8s; }
-.sp-4 { bottom: 36px; right: 14px; font-size: 0.75rem; animation-delay: 1.2s; }
-
-@keyframes floatSparkle {
-  0% { transform: translateY(0) scale(0.9); opacity: 0.6; }
-  100% { transform: translateY(-5px) scale(1.15); opacity: 1; filter: drop-shadow(0 0 6px rgba(255, 42, 133, 0.8)); }
-}
-
-.cute-mascot {
-  position: absolute;
-  z-index: 4;
-  font-size: 1.2rem;
-  pointer-events: none;
-  filter: drop-shadow(0 0 6px rgba(255, 128, 191, 0.8));
-}
-
-.mascot-tl {
-  top: -4px;
-  left: -2px;
-  transform: rotate(-15deg);
-  animation: mascotPeek 2.5s infinite alternate ease-in-out;
-}
-
-.mascot-br {
-  bottom: 8px;
-  right: 8px;
-  transform: rotate(12deg);
-  animation: mascotWobble 1.8s infinite alternate ease-in-out;
-}
-
-@keyframes mascotPeek {
-  0% { transform: rotate(-15deg) translateY(0); }
-  100% { transform: rotate(-8deg) translateY(3px); }
-}
-
-@keyframes mascotWobble {
-  0% { transform: rotate(12deg) scale(0.95); }
-  100% { transform: rotate(20deg) scale(1.1); }
 }
 
 /* Header Row */

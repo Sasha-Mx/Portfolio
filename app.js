@@ -1042,7 +1042,10 @@
     if (!realSaraModal) return;
     realSaraModal.classList.add('active');
     realSaraModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('sara-modal-open');
     document.body.style.overflow = 'hidden';
+    const crt = document.getElementById('crtOverlay');
+    if (crt) crt.classList.add('hide-for-modal');
     triggerSound('coin');
     burstPixelConfetti(window.innerWidth / 2, window.innerHeight / 2, 25);
   }
@@ -1051,7 +1054,10 @@
     if (!realSaraModal) return;
     realSaraModal.classList.remove('active');
     realSaraModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('sara-modal-open');
     document.body.style.overflow = '';
+    const crt = document.getElementById('crtOverlay');
+    if (crt) crt.classList.remove('hide-for-modal');
     triggerSound('bleep');
   }
 

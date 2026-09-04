@@ -188,7 +188,13 @@
           <div class="map-player-hud sound-trigger clickable-player-hud" id="mapPlayerHudBtn" role="button" tabindex="0" title="Click to meet the real Sara!" aria-label="Meet the real Sara!">
             <img src="assets/sara_gamified_anime.jpg" alt="Sara Portrait" class="map-hud-avatar">
             <div class="map-hud-stats">
-              <div class="hud-stat-name">NAME: SARA <span class="hud-click-hint">💬</span></div>
+              <div class="hud-stat-name">
+                <span class="hud-name-text">NAME: SARA</span>
+                <span class="hud-bouncing-invite" aria-label="Click me!">
+                  <span class="invite-icon">💬</span>
+                  <span class="invite-text">CLICK ME!</span>
+                </span>
+              </div>
               <div class="hud-stat-lvl">LV 03 • FULL-STACK DEV</div>
               <div class="hud-stat-hp">HP: <span class="hp-hearts">♥♥♥♥♥</span></div>
             </div>
@@ -1573,16 +1579,6 @@
   <div class="retro-modal sara-popup-modal" id="realSaraModal" aria-hidden="true" role="dialog" aria-label="Meet the real Sara">
     <div class="modal-backdrop" id="saraModalBackdrop"></div>
     <div class="sara-popup-card">
-      <!-- Floating Cute Pixel Decorations -->
-      <span class="cute-sparkle sp-1">✨</span>
-      <span class="cute-sparkle sp-2">⭐</span>
-      <span class="cute-sparkle sp-3">💖</span>
-      <span class="cute-sparkle sp-4">✦</span>
-
-      <!-- Tiny Pixel Companion Peeking -->
-      <div class="cute-mascot mascot-tl" title="Meow!">🐱</div>
-      <div class="cute-mascot mascot-br" title="Player 01">⭐</div>
-
       <!-- Top Header Row -->
       <div class="sara-popup-header">
         <div class="sara-exe-pill">
@@ -1593,7 +1589,7 @@
         </button>
       </div>
 
-      <!-- Clean Photo Frame: 100% natural, no grid lines, no overlays -->
+      <!-- Clean Photo Frame: 100% natural, no grid lines, no overlays, nothing over photo -->
       <div class="sara-real-photo-frame">
         <img src="assets/sara_real.jpg" alt="Sara Dhoundiyal" class="sara-real-photo">
       </div>
