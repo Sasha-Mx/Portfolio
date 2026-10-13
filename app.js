@@ -620,43 +620,21 @@
     const cleanSubject = (subject || '').trim();
     const cleanMessage = (message || '').trim();
 
-    // 1. Clean professional subject line
-    let finalSubject = '';
-    if (cleanSubject) {
-      if (/portfolio/i.test(cleanSubject)) {
-        finalSubject = cleanSubject;
-      } else {
-        finalSubject = `[Portfolio Inquiry] ${cleanSubject}`;
-      }
-    } else {
-      finalSubject = `[Portfolio Inquiry] Opportunity / Collaboration Inquiry for Sara`;
-    }
+    // 1. Subject: Use exact subject entered by user (no artificial tags)
+    const finalSubject = cleanSubject || 'Message for Sara';
 
-    // 2. Clean, natural, properly formatted email body
+    // 2. Body: Use clean message as typed by user
     let bodyText = cleanMessage;
     if (!bodyText) {
-      bodyText = `I visited your portfolio and was really impressed by your projects and technical skills. I would love to connect with you regarding an engineering opportunity / collaboration!`;
+      bodyText = 'Hi Sara,\n\nI came across your portfolio and wanted to reach out!';
     }
 
-    // Check if message already has a friendly greeting (Hi, Hello, Hey, Dear, etc.)
-    const startsWithGreeting = /^(hi|hello|hey|dear|good\s+(morning|afternoon|evening)|greetings)\b/i.test(bodyText);
-    const greeting = startsWithGreeting ? '' : 'Hi Sara,\n\n';
-
-    // Check if message already has a sign-off (Best regards, Thanks, Sincerely, etc.)
-    const endsWithSignoff = /(best(\s+regards)?|regards|sincerely|thanks|thank\s+you|cheers|yours(\s+truly)?)[,!]?\s*$/i.test(bodyText);
-
-    let signoff = '';
-    if (cleanName && !endsWithSignoff) {
-      signoff = `\n\nBest regards,\n${cleanName}`;
-    } else if (!cleanName && !endsWithSignoff && !cleanMessage) {
-      signoff = `\n\nLooking forward to hearing from you!`;
+    // 3. Sender name: Attach clean "- [Name]" only if provided and not already in the text
+    if (cleanName && !new RegExp('\\b' + cleanName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(bodyText)) {
+      bodyText = `${bodyText}\n\n- ${cleanName}`;
     }
 
-    const signature = `\n\n---\nSent via Sara Dhoundiyal's Portfolio\nhttps://portfolio-dg92.vercel.app/`;
-
-    const finalBody = `${greeting}${bodyText}${signoff}${signature}`;
-
-    return { subject: finalSubject, body: finalBody };
+    return { subject: finalSubject, body: bodyText };
   }
 
   if (contactForm) {
