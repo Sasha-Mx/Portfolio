@@ -603,9 +603,12 @@
     });
   }
 
-  // Contact Form Submission & Auto-Redirect to Mail System
+  // Contact Form Submission & Direct Mail Dispatch
   const contactForm = document.getElementById('contactForm');
   const transmissionStatus = document.getElementById('transmissionStatus');
+  const transStatusIcon = document.getElementById('transStatusIcon');
+  const transStatusTitle = document.getElementById('transStatusTitle');
+  const transStatusSub = document.getElementById('transStatusSub');
   const btnOpenMailto = document.getElementById('btnOpenMailto');
   const btnOpenGmail = document.getElementById('btnOpenGmail');
   const btnCopyDraft = document.getElementById('btnCopyDraft');
@@ -617,51 +620,79 @@
       const subjectInput = document.getElementById('senderSubject');
       const messageInput = document.getElementById('senderMessage');
 
-      const name = (nameInput && nameInput.value ? nameInput.value.trim() : '') || 'Recruiter / Engineering Lead';
-      const subject = (subjectInput && subjectInput.value ? subjectInput.value.trim() : '') || 'Full-Stack / Software Engineering Role';
-      const message = (messageInput && messageInput.value ? messageInput.value.trim() : '') || 'Hi Sara,\n\nI reviewed your portfolio and would like to connect with you regarding an engineering role / collaboration.';
+      const rawName = (nameInput && nameInput.value ? nameInput.value.trim() : '');
+      const rawSubject = (subjectInput && subjectInput.value ? subjectInput.value.trim() : '');
+      const rawMessage = (messageInput && messageInput.value ? messageInput.value.trim() : '');
 
+      const name = rawName || 'Recruiter / Engineering Collaborator';
+      const subject = rawSubject || 'Full-Stack / Software Engineering Role';
+      const messageText = rawMessage || 'I was impressed by your portfolio and would like to connect with you regarding an engineering opportunity / collaboration.';
+
+      // Properly format email prompt and structure
       const mailSubject = `[Portfolio Quest] ${subject}`;
-      const mailBody = `From: ${name}\n\n${message}\n\n--\nDispatched via Sara Dhoundiyal Portfolio`;
+      const hasGreeting = /^(hi|hello|hey|dear|greetings)\b/i.test(messageText);
+      const greeting = hasGreeting ? '' : 'Hi Sara,\n\n';
 
-      const mailtoUrl = `mailto:saradhoundiyal296@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+      const mailBody = `${greeting}${messageText}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📡 TRANSMISSION DISPATCHED VIA PORTFOLIO\n• From: ${name}\n• Subject: ${subject}\n• Recipient: Sara Dhoundiyal (saradhoundiyal296@gmail.com)\n• Portfolio: https://portfolio-dg92.vercel.app/\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+
       const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=saradhoundiyal296@gmail.com&su=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+      const mailtoUrl = `mailto:saradhoundiyal296@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
 
-      showToast('🚀 OPENING YOUR MAIL SYSTEM...');
-      triggerSound('powerup');
+      const isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
       // Populate & reveal transmission status banner with direct fallback actions
       if (transmissionStatus) {
         transmissionStatus.classList.remove('hidden');
       }
-      if (btnOpenMailto) {
-        btnOpenMailto.href = mailtoUrl;
-      }
       if (btnOpenGmail) {
         btnOpenGmail.href = gmailUrl;
+      }
+      if (btnOpenMailto) {
+        btnOpenMailto.href = mailtoUrl;
       }
       if (btnCopyDraft) {
         btnCopyDraft.onclick = () => {
           const draftText = `To: saradhoundiyal296@gmail.com\nSubject: ${mailSubject}\n\n${mailBody}`;
           navigator.clipboard.writeText(draftText).then(() => {
-            showToast('📋 MESSAGE DRAFT COPIED TO CLIPBOARD!');
+            showToast('📋 FULL DRAFT COPIED TO CLIPBOARD!');
             triggerSound('coin');
           }).catch(() => {
-            showToast('📋 Ready to send to saradhoundiyal296@gmail.com');
+            showToast('📋 Draft ready in mail composer!');
           });
         };
       }
 
-      // Automatically trigger operating system default mail client (mailto protocol)
-      try {
-        window.location.href = mailtoUrl;
-      } catch (err) {
-        const mailAnchor = document.createElement('a');
-        mailAnchor.href = mailtoUrl;
-        mailAnchor.style.display = 'none';
-        document.body.appendChild(mailAnchor);
-        mailAnchor.click();
-        setTimeout(() => mailAnchor.remove(), 1000);
+      triggerSound('powerup');
+
+      if (isMobile) {
+        // Mobile phone / tablet: trigger native mail or Gmail app directly
+        showToast('📱 OPENING IN YOUR MAIL APP...');
+        if (transStatusIcon) transStatusIcon.textContent = '📱';
+        if (transStatusTitle) transStatusTitle.textContent = 'OPENING IN YOUR MAIL APP!';
+        if (transStatusSub) transStatusSub.textContent = 'If your mail app did not open automatically, choose an option below:';
+
+        try {
+          window.location.href = mailtoUrl;
+        } catch (err) {
+          const mailAnchor = document.createElement('a');
+          mailAnchor.href = mailtoUrl;
+          mailAnchor.style.display = 'none';
+          document.body.appendChild(mailAnchor);
+          mailAnchor.click();
+          setTimeout(() => mailAnchor.remove(), 1000);
+        }
+      } else {
+        // Laptop / PC / Desktop: Directly open Gmail Web Compose pre-filled in a new tab
+        showToast('🔴 LAUNCHING GMAIL WEB COMPOSE...');
+        if (transStatusIcon) transStatusIcon.textContent = '🔴';
+        if (transStatusTitle) transStatusTitle.textContent = 'GMAIL COMPOSE OPENED IN NEW TAB!';
+        if (transStatusSub) transStatusSub.textContent = 'If Gmail did not pop up in a new tab automatically, choose an option below:';
+
+        const win = window.open(gmailUrl, '_blank');
+        if (!win || win.closed || typeof win.closed === 'undefined') {
+          // If browser popup blocker intervened, redirect current window or trigger fallback
+          window.location.href = gmailUrl;
+        }
       }
     });
   }
