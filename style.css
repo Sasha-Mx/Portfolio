@@ -1426,6 +1426,16 @@ body.vanta-fog-off .vanta-fog-container {
   transform: translateY(-3px);
 }
 
+.domain-card.domain-card-wide {
+  grid-column: 1 / -1;
+}
+
+.domain-card.domain-card-wide .card-quest-features {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 /* Card Themes */
 /* 1. Pink: Full-Stack */
 .domain-card.pink-card {
@@ -1479,7 +1489,7 @@ body.vanta-fog-off .vanta-fog-container {
 }
 .blue-card .card-action-text { color: #8b78f6; }
 
-/* 3. Cyan: Cybersecurity Exploration */
+/* 3. Cyan: 100 Days Python Bootcamp */
 .domain-card.cyan-card {
   border: 2px solid #00f0b5;
   box-shadow: 0 0 14px rgba(0, 240, 181, 0.2), inset 0 0 12px rgba(0, 240, 181, 0.05);
@@ -2251,6 +2261,34 @@ body.vanta-fog-off .vanta-fog-container {
 
 .window-skills .skill-tag:hover {
   background: #ff5ca0;
+  color: #ffffff;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.window-skills .skill-tag.java-tag {
+  background: #dbeafe;
+  border-color: #000000;
+  color: #000000;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.window-skills .skill-tag.java-tag:hover {
+  background: #3b82f6;
+  color: #ffffff;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.window-skills .skill-tag.python-tag {
+  background: #d4f0f9;
+  border-color: #000000;
+  color: #000000;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.window-skills .skill-tag.python-tag:hover {
+  background: #0ea5e9;
   color: #ffffff;
   transform: translate(1px, 1px);
   box-shadow: 1px 1px 0px #000000;
@@ -3035,6 +3073,7 @@ body.vanta-fog-off .vanta-fog-container {
 .etpulse-art { background: radial-gradient(circle, #3d2a10 0%, #170f03 100%); }
 .mindoasis-art { background: radial-gradient(circle, #123145 0%, #04121c 100%); }
 .arthsahay-art { background: radial-gradient(circle, #3a152e 0%, #170411 100%); }
+.lunarcv-art { background: radial-gradient(circle, #0e1c36 0%, #050a14 100%); }
 
 .screen-scanlines {
   display: none !important;
@@ -3795,12 +3834,60 @@ body.vanta-fog-off .vanta-fog-container {
   position: relative;
 }
 
+.resume-view-tab {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  padding: 5px 10px;
+  background: #1e1338;
+  border: 1.5px solid #4a3480;
+  color: #c4b5fd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.resume-view-tab:hover {
+  background: #2a1a4e;
+  border-color: var(--terminal-cyan);
+  color: #fff;
+}
+
+.resume-view-tab.active {
+  background: var(--terminal-cyan);
+  border-color: #fff;
+  color: #070414;
+  font-weight: bold;
+}
+
 .resume-pdf-frame {
   width: 100%;
   height: 100%;
   border: none;
   background: #fff;
   display: block;
+}
+
+.resume-img-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #12101e;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.resume-img-container.hidden,
+.resume-pdf-frame.hidden {
+  display: none !important;
+}
+
+.resume-preview-img {
+  width: 100%;
+  max-width: 860px;
+  height: auto;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
 }
 
 /* ==========================================================================

@@ -45,17 +45,17 @@ Combining the nostalgia of the **Nintendo 3DS**, **16-bit RPG Overworld explorat
 * Explore specialized domains:
   * **Full-Stack Development**: Modern web applications, React, Node.js, MySQL, Bootstrap.
   * **Java Development**: Data Structures & Algorithms, Object-Oriented Design, Spring Boot.
-  * **Cybersecurity Exploration**: Web application defense, OWASP Top 10, authentication protocols.
-  * **More Inventory**: Geospatial tools (Leaflet), Python, ML & data exploration.
+  * **Python Bootcamp (100 Days)**: Comprehensive Python mastery from fundamentals to advanced — core syntax, OOP, data structures, automation, APIs, web scraping & scripting.
 * **Player Profile Dossier**: Real profile portrait, player rank (`PLAYER 01`), and real-time LED stat progress bars.
 
 ### 5. 📦 3D Cover-Flow Cartridge Project Showcase
 * Pure CSS 3D perspective slider (`preserve-3d`, `rotateY`, `scale`) inspired by modern gaming carousels:
-  * 🚀 **Mentra.AI**: Agentic career guidance coach with skill-gap analysis & mock interview UI ([Live App](https://aimentra-three.vercel.app/) • [GitHub](https://github.com/Sasha-Mx/Mentra.AI))
+  * 🚀 **Mentra.AI**: Full-stack career guidance platform with skill-gap analysis & mock interview UI ([Live App](https://aimentra-three.vercel.app/) • [GitHub](https://github.com/Sasha-Mx/Mentra.AI))
   * 🐾 **PawCare**: Pet health management & appointment booking system ([Live App](https://paw-care-zeta.vercel.app) • [GitHub](https://github.com/Sasha-Mx/PawCare))
   * 🧘 **MinDOasis**: Mental wellness companion with mindful journaling ([Live App](https://mindoasis-proto.vercel.app) • [GitHub](https://github.com/Sasha-Mx/MinDOasis))
   * 🚌 **RouteIQ**: Delhi transit companion with live tracking & route optimization ([Live App](https://route-iq-delta.vercel.app) • [GitHub](https://github.com/Sasha-Mx/RouteIQ))
-  * 🤝 **ArthSahay**: Conversational financial intelligence loan assistant ([Live App](https://arth-sahay-sasha-mxs-projects.vercel.app) • [GitHub](https://github.com/Sasha-Mx/ArthSahay))
+  * 🤝 **ArthSahay**: Financial guidance and loan evaluation assistant ([Live App](https://arth-sahay-sasha-mxs-projects.vercel.app) • [GitHub](https://github.com/Sasha-Mx/ArthSahay))
+  * 🌖 **LunarCV**: Chandrayaan-2 Optical Registration Engine with crater mapping telemetry ([Live App](https://chanda-omega.vercel.app/) • [GitHub](https://github.com/Sasha-Mx))
 * Controls: Arcade push-buttons (◀ PREV / NEXT ▶), keyboard arrow navigation (`←` / `→`), and touch-swipe on mobile.
 
 ### 6. 🎮 Playable Mini-Game: "Sara Chasing Meow!"

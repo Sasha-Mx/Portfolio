@@ -364,8 +364,8 @@
     modalRouteIQ: {
       title: 'RouteIQ • Mission Dossier',
       content: `
-        <h3 style="font-family: var(--font-pixel); font-size: 1rem; color: #d60058; margin-bottom: 8px;">RouteIQ - AI Transit Companion</h3>
-        <p style="font-size: 1.2rem; margin-bottom: 12px;"><strong>Mission:</strong> Solve daily commuter friction across the Delhi-NCR transit grid using real-time GTFS feeds and AI.</p>
+        <h3 style="font-family: var(--font-pixel); font-size: 1rem; color: #d60058; margin-bottom: 8px;">RouteIQ - Transit Companion</h3>
+        <p style="font-size: 1.2rem; margin-bottom: 12px;"><strong>Mission:</strong> Solve daily commuter friction across the Delhi-NCR transit grid using real-time GTFS feeds and intelligent route optimization.</p>
         <div style="background: rgba(255,255,255,0.7); border: 2px solid #000; padding: 10px; margin-bottom: 12px;">
           <p>• <strong>Live Bus Tracking:</strong> Interactive Leaflet map visualizing real-time positions of DTC transit buses.</p>
           <p>• <strong>Dynamic Replanning:</strong> Automatically computes alternate routes during delays.</p>
@@ -379,10 +379,10 @@
       title: 'ET Pulse • Mission Dossier',
       content: `
         <h3 style="font-family: var(--font-pixel); font-size: 1rem; color: #d60058; margin-bottom: 8px;">ET Pulse - Financial Intelligence</h3>
-        <p style="font-size: 1.2rem; margin-bottom: 12px;"><strong>Mission:</strong> Democratize market analysis through AI-curated news summaries and multilingual access.</p>
+        <p style="font-size: 1.2rem; margin-bottom: 12px;"><strong>Mission:</strong> Democratize market analysis through real-time financial market data, sector heatmaps, and multilingual access.</p>
         <div style="background: rgba(255,255,255,0.7); border: 2px solid #000; padding: 10px; margin-bottom: 12px;">
           <p>• <strong>Sector Heatmaps:</strong> Live visual sentiment and performance analysis across stock sectors.</p>
-          <p>• <strong>Explore with AI:</strong> Integrated conversational financial assistant.</p>
+          <p>• <strong>Smart Search & Discovery:</strong> Integrated financial search and analytics assistant.</p>
           <p>• <strong>Multilingual Accessibility:</strong> Seamless localized UI support in Hindi, Tamil, Telugu, Bengali, and Marathi.</p>
         </div>
         <p style="font-family: var(--font-pixel); font-size: 0.7rem; color: #222;">TECH: React • Vite • Tailwind CSS • Financial APIs • i18n Localization</p>
@@ -392,26 +392,26 @@
       title: 'MindOasis • Mission Dossier',
       content: `
         <h3 style="font-family: var(--font-pixel); font-size: 1rem; color: #d60058; margin-bottom: 8px;">MindOasis - Mental Wellness</h3>
-        <p style="font-size: 1.2rem; margin-bottom: 12px;"><strong>Mission:</strong> Foster emotional resilience through thoughtful, calming micro-interactions and AI mood analysis.</p>
+        <p style="font-size: 1.2rem; margin-bottom: 12px;"><strong>Mission:</strong> Foster emotional resilience through thoughtful, calming micro-interactions and guided mood journaling.</p>
         <div style="background: rgba(255,255,255,0.7); border: 2px solid #000; padding: 10px; margin-bottom: 12px;">
           <p>• <strong>Mood Tracking:</strong> Visual mood diaries with historical trends.</p>
           <p>• <strong>Private Journaling:</strong> End-to-end client-side privacy for personal reflections.</p>
-          <p>• <strong>AI-Assisted Guidance:</strong> Empathic NLP conversational prompts for stress relief.</p>
+          <p>• <strong>Mindful Guidance:</strong> Empathetic guided wellness prompts and reflections for stress relief.</p>
         </div>
-        <p style="font-family: var(--font-pixel); font-size: 0.7rem; color: #222;">TECH: React • Tailwind CSS • NLP Sentiment Analysis • Web Storage</p>
+        <p style="font-family: var(--font-pixel); font-size: 0.7rem; color: #222;">TECH: React • Tailwind CSS • Web Storage • Responsive UX</p>
       `
     },
     modalArthSahay: {
       title: 'ArthSahay • Mission Dossier',
       content: `
-        <h3 style="font-family: var(--font-pixel); font-size: 1rem; color: #d60058; margin-bottom: 8px;">ArthSahay - AI Loan Companion</h3>
-        <p style="font-size: 1.2rem; margin-bottom: 12px;"><strong>Mission:</strong> Bridge financial literacy gaps by transforming complicated loan terms into natural conversations.</p>
+        <h3 style="font-family: var(--font-pixel); font-size: 1rem; color: #d60058; margin-bottom: 8px;">ArthSahay - Financial Companion</h3>
+        <p style="font-size: 1.2rem; margin-bottom: 12px;"><strong>Mission:</strong> Bridge financial literacy gaps by transforming complicated loan terms into clear, guided conversations.</p>
         <div style="background: rgba(255,255,255,0.7); border: 2px solid #000; padding: 10px; margin-bottom: 12px;">
-          <p>• <strong>Conversational UI:</strong> Guided step-by-step interview to determine loan eligibility.</p>
+          <p>• <strong>Conversational UI:</strong> Guided step-by-step walkthrough to determine loan eligibility.</p>
           <p>• <strong>Transparent Explanations:</strong> Breaks down interest rates, hidden terms, and repayment paths.</p>
           <p>• <strong>Informed Decisions:</strong> Empowers first-time borrowers with plain-language risk evaluations.</p>
         </div>
-        <p style="font-family: var(--font-pixel); font-size: 0.7rem; color: #222;">TECH: Python • NLP • React • Financial Decision Engine</p>
+        <p style="font-family: var(--font-pixel); font-size: 0.7rem; color: #222;">TECH: Python • React • Financial Decision Engine</p>
       `
     }
   };
@@ -488,6 +488,30 @@
       closeResumeModal();
     }
   });
+
+  // Resume View Toggle (PDF Viewer vs Crisp Document Image)
+  const resumeTabPdf = document.getElementById('resumeTabPdf');
+  const resumeTabImg = document.getElementById('resumeTabImg');
+  const resumePdfFrame = document.getElementById('resumePdfFrame');
+  const resumeImgContainer = document.getElementById('resumeImgContainer');
+
+  if (resumeTabPdf && resumeTabImg && resumePdfFrame && resumeImgContainer) {
+    resumeTabPdf.addEventListener('click', () => {
+      resumeTabPdf.classList.add('active');
+      resumeTabImg.classList.remove('active');
+      resumePdfFrame.classList.remove('hidden');
+      resumeImgContainer.classList.add('hidden');
+      playSound('bleep');
+    });
+
+    resumeTabImg.addEventListener('click', () => {
+      resumeTabImg.classList.add('active');
+      resumeTabPdf.classList.remove('active');
+      resumePdfFrame.classList.add('hidden');
+      resumeImgContainer.classList.remove('hidden');
+      playSound('bleep');
+    });
+  }
 
   // ==========================================================================
   // 6. PLATFORMER MYSTERY BLOCKS & COIN COUNTER
@@ -634,39 +658,27 @@
         { name: 'Git & GitHub', icon: '🐙' }
       ]
     },
-    cybersecurity: {
-      name: 'CYBERSECURITY EXPLORATION',
-      pillName: 'EQUIPPED: CYBERSEC',
+    python: {
+      name: 'PYTHON BOOTCAMP (100 DAYS)',
+      pillName: 'EQUIPPED: PYTHON 100D',
       themeClass: 'cyan-equipped',
-      tagline: '// ACTIVE DOMAIN: DEFENSIVE SECURITY & AUTH PROTOCOLS',
+      tagline: '// ACTIVE DOMAIN: 100 DAYS OF PYTHON (BASICS TO ADVANCED)',
       stack: [
-        { name: 'Web Security', icon: '🛡️' },
-        { name: 'Authentication', icon: '🔐' },
-        { name: 'JWT', icon: '🔑' },
-        { name: 'OWASP Basics', icon: '🎯' },
-        { name: 'Secure APIs', icon: '🔒' },
-        { name: 'Network Basics', icon: '🌐' },
-        { name: 'Linux', icon: '🐧' },
+        { name: 'Python 3', icon: '🐍' },
+        { name: 'OOP & Classes', icon: '📦' },
+        { name: 'Data Structures', icon: '🧩' },
+        { name: 'Automation', icon: '⚡' },
+        { name: 'APIs & Requests', icon: '🌐' },
+        { name: 'Web Scraping', icon: '🥣' },
+        { name: 'File Handling', icon: '📁' },
         { name: 'Git & GitHub', icon: '🐙' }
-      ]
-    },
-    moreprojects: {
-      name: 'MORE INVENTORY',
-      pillName: 'EQUIPPED: INVENTORY (LEARNER)',
-      themeClass: 'purple-equipped',
-      tagline: '// ACTIVE DOMAIN: GEOSPATIAL & AI/ML LEARNING IN PROGRESS',
-      stack: [
-        { name: 'Leaflet', icon: '🗺️', isLearner: false },
-        { name: 'Python', icon: '🐍', isLearner: false },
-        { name: 'Intro to ML', icon: '🌱', isLearner: true },
-        { name: 'NLP', icon: '💬', isLearner: true },
-        { name: 'TensorFlow', icon: '🧠', isLearner: true },
-        { name: 'Pandas', icon: '🐼', isLearner: true },
-        { name: 'NumPy', icon: '🔢', isLearner: true },
-        { name: 'Various Tech', icon: '🛠️', isLearner: false }
       ]
     }
   };
+
+  // Fallback aliases
+  domainData.ai = domainData.python;
+  domainData.moreprojects = domainData.python;
 
   const domainCards = document.querySelectorAll('.domain-card');
   const currentDomainStack = document.getElementById('currentDomainStack');
