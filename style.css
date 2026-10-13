@@ -22,6 +22,7 @@
   --pixel-purple: #7b68ee;
   --pixel-lavender: #a594f9;
   --pixel-cyan: #00e5ff;
+  --terminal-cyan: #00e5ff;
   
   --text-light: #ffffff;
   --text-dim: #b8b3d6;
@@ -3836,27 +3837,34 @@ body.vanta-fog-off .vanta-fog-container {
 
 .resume-view-tab {
   font-family: var(--font-pixel);
-  font-size: 0.65rem;
-  padding: 5px 10px;
-  background: #1e1338;
-  border: 1.5px solid #4a3480;
+  font-size: 0.68rem;
+  padding: 6px 14px;
+  background: #181033;
+  border: 2px solid #50398c;
   color: #c4b5fd;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.5px;
+  user-select: none;
 }
 
 .resume-view-tab:hover {
   background: #2a1a4e;
-  border-color: var(--terminal-cyan);
-  color: #fff;
+  border-color: #00e5ff;
+  color: #ffffff;
 }
 
 .resume-view-tab.active {
-  background: var(--terminal-cyan);
-  border-color: #fff;
-  color: #070414;
-  font-weight: bold;
+  background: #00e5ff !important;
+  border-color: #ffffff !important;
+  color: #060214 !important;
+  font-weight: 900 !important;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  text-shadow: none !important;
 }
 
 .resume-pdf-frame {
