@@ -3621,6 +3621,57 @@ body.vanta-fog-off .vanta-fog-container {
   width: 100%;
 }
 
+/* Transmission Status Banner & Fallback Actions */
+.transmission-status {
+  margin-top: 14px;
+  background: #140b2b;
+  border: 3px solid #00ff88;
+  padding: 12px 14px;
+  box-shadow: var(--pixel-shadow-sm), 0 0 16px rgba(0, 255, 136, 0.35);
+  animation: modalPop 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.transmission-status.hidden {
+  display: none !important;
+}
+
+.trans-status-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-pixel);
+  font-size: 0.68rem;
+  color: var(--neon-green);
+  text-shadow: 0 0 8px var(--neon-green-glow);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.trans-status-sub {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: #d8cefc;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.trans-status-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gmail-quick-btn {
+  background: #ea4335 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+.gmail-quick-btn:hover {
+  background: #ff5242 !important;
+  color: #ffffff !important;
+}
+
 /* ==========================================================================
    MODAL DOSSIER POPUP
    ========================================================================== */

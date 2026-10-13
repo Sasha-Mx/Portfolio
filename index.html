@@ -1242,9 +1242,9 @@
               <div class="c-icon">💼</div>
               <div class="c-details">
                 <div class="c-label">LINKEDIN:</div>
-                <div class="c-val">Sara Dhoundiyal on LinkedIn</div>
+                <div class="c-val">linkedin.com/in/sara-dhoundiyal</div>
               </div>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger" data-sound="bleep">
+              <a href="https://www.linkedin.com/in/sara-dhoundiyal/" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger" data-sound="bleep" title="Visit Sara Dhoundiyal on LinkedIn">
                 🔗 VISIT
               </a>
             </div>
@@ -1277,23 +1277,34 @@
           <!-- Right Column: Quick Transmission Dispatch -->
           <div class="contact-form-panel">
             <h3 class="panel-heading">TRANSMIT A MESSAGE</h3>
-            <form id="contactForm" class="pixel-form">
+            <form id="contactForm" class="pixel-form" novalidate>
               <div class="form-group">
                 <label for="senderName" class="form-label">SENDER NAME / ORG:</label>
-                <input type="text" id="senderName" required class="pixel-input" placeholder="e.g. Tech Lead / Recruiter">
+                <input type="text" id="senderName" class="pixel-input" placeholder="e.g. Tech Lead / Recruiter">
               </div>
               <div class="form-group">
                 <label for="senderSubject" class="form-label">QUEST SUBJECT:</label>
-                <input type="text" id="senderSubject" required class="pixel-input" placeholder="e.g. Full-Stack / Software Engineering Role">
+                <input type="text" id="senderSubject" class="pixel-input" placeholder="e.g. Full-Stack / Software Engineering Role">
               </div>
               <div class="form-group">
                 <label for="senderMessage" class="form-label">TRANSMISSION CONTENT:</label>
-                <textarea id="senderMessage" rows="4" required class="pixel-input" placeholder="Write your transmission to Sara..."></textarea>
+                <textarea id="senderMessage" rows="4" class="pixel-input" placeholder="Write your transmission to Sara..."></textarea>
               </div>
               <button type="submit" class="pixel-btn start-btn submit-btn sound-trigger" data-sound="powerup" id="sendBtn">
                 <span class="btn-border"></span>
                 <span class="btn-text">⚡ SEND TRANSMISSION</span>
               </button>
+              <div id="transmissionStatus" class="transmission-status hidden" aria-live="polite">
+                <div class="trans-status-msg">
+                  <span>📡</span> <strong>TRANSMISSION OPENING IN YOUR MAIL SYSTEM!</strong>
+                </div>
+                <p class="trans-status-sub">If your default mail client didn't open automatically, choose an option below:</p>
+                <div class="trans-status-buttons">
+                  <a id="btnOpenMailto" href="#" class="pixel-btn-sm sound-trigger" data-sound="bleep">🔄 RE-OPEN DEFAULT MAIL</a>
+                  <a id="btnOpenGmail" href="#" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger gmail-quick-btn" data-sound="bleep">🔴 OPEN IN GMAIL WEB</a>
+                  <button type="button" id="btnCopyDraft" class="pixel-btn-sm sound-trigger" data-sound="coin">📋 COPY DRAFT</button>
+                </div>
+              </div>
             </form>
           </div>
 

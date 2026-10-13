@@ -2,7 +2,7 @@
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-portfolio--dg92.vercel.app-ff2a85?style=for-the-badge&logo=vercel)](https://portfolio-dg92.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Sasha--Mx-00ff88?style=for-the-badge&logo=github)](https://github.com/Sasha-Mx)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Sara%20Dhoundiyal-00e5ff?style=for-the-badge&logo=linkedin)](https://linkedin.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Sara%20Dhoundiyal-00e5ff?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/sara-dhoundiyal/)
 [![Status](https://img.shields.io/badge/Status-Completed%20%26%20Deployed-ffd000?style=for-the-badge)](https://portfolio-dg92.vercel.app/)
 
 A retro-modern, gamified developer portfolio engineered by **Sara Dhoundiyal** (Full-Stack Developer • B.Tech IT, GGSIPU • CGPA: 9.18). 

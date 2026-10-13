@@ -603,22 +603,66 @@
     });
   }
 
-  // Contact Form Submission
+  // Contact Form Submission & Auto-Redirect to Mail System
   const contactForm = document.getElementById('contactForm');
+  const transmissionStatus = document.getElementById('transmissionStatus');
+  const btnOpenMailto = document.getElementById('btnOpenMailto');
+  const btnOpenGmail = document.getElementById('btnOpenGmail');
+  const btnCopyDraft = document.getElementById('btnCopyDraft');
+
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('senderName').value;
-      const subject = document.getElementById('senderSubject').value;
-      const message = document.getElementById('senderMessage').value;
+      const nameInput = document.getElementById('senderName');
+      const subjectInput = document.getElementById('senderSubject');
+      const messageInput = document.getElementById('senderMessage');
 
-      showToast('⚡ TRANSMISSION DISPATCHED TO SARA!');
+      const name = (nameInput && nameInput.value ? nameInput.value.trim() : '') || 'Recruiter / Engineering Lead';
+      const subject = (subjectInput && subjectInput.value ? subjectInput.value.trim() : '') || 'Full-Stack / Software Engineering Role';
+      const message = (messageInput && messageInput.value ? messageInput.value.trim() : '') || 'Hi Sara,\n\nI reviewed your portfolio and would like to connect with you regarding an engineering role / collaboration.';
+
+      const mailSubject = `[Portfolio Quest] ${subject}`;
+      const mailBody = `From: ${name}\n\n${message}\n\n--\nDispatched via Sara Dhoundiyal Portfolio`;
+
+      const mailtoUrl = `mailto:saradhoundiyal296@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=saradhoundiyal296@gmail.com&su=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+
+      showToast('🚀 OPENING YOUR MAIL SYSTEM...');
       triggerSound('powerup');
 
-      // Open user's default mail client pre-filled
-      const mailtoUrl = `mailto:saradhoundiyal296@gmail.com?subject=${encodeURIComponent('[Portfolio Quest] ' + subject)}&body=${encodeURIComponent('From: ' + name + '\n\n' + message)}`;
-      window.open(mailtoUrl, '_blank');
-      contactForm.reset();
+      // Populate & reveal transmission status banner with direct fallback actions
+      if (transmissionStatus) {
+        transmissionStatus.classList.remove('hidden');
+      }
+      if (btnOpenMailto) {
+        btnOpenMailto.href = mailtoUrl;
+      }
+      if (btnOpenGmail) {
+        btnOpenGmail.href = gmailUrl;
+      }
+      if (btnCopyDraft) {
+        btnCopyDraft.onclick = () => {
+          const draftText = `To: saradhoundiyal296@gmail.com\nSubject: ${mailSubject}\n\n${mailBody}`;
+          navigator.clipboard.writeText(draftText).then(() => {
+            showToast('📋 MESSAGE DRAFT COPIED TO CLIPBOARD!');
+            triggerSound('coin');
+          }).catch(() => {
+            showToast('📋 Ready to send to saradhoundiyal296@gmail.com');
+          });
+        };
+      }
+
+      // Automatically trigger operating system default mail client (mailto protocol)
+      try {
+        window.location.href = mailtoUrl;
+      } catch (err) {
+        const mailAnchor = document.createElement('a');
+        mailAnchor.href = mailtoUrl;
+        mailAnchor.style.display = 'none';
+        document.body.appendChild(mailAnchor);
+        mailAnchor.click();
+        setTimeout(() => mailAnchor.remove(), 1000);
+      }
     });
   }
 
