@@ -603,7 +603,7 @@
     });
   }
 
-  // Contact Form Submission & Mailto Dispatch
+  // Contact Form Submission & Direct Mail Dispatch
   const contactForm = document.getElementById('contactForm');
   const transmissionStatus = document.getElementById('transmissionStatus');
   const transStatusIcon = document.getElementById('transStatusIcon');
@@ -612,59 +612,59 @@
   const btnOpenMailto = document.getElementById('btnOpenMailto');
   const btnOpenGmail = document.getElementById('btnOpenGmail');
   const btnCopyDraft = document.getElementById('btnCopyDraft');
+  const gmailSubject = document.getElementById('gmailSubject');
+  const gmailBody = document.getElementById('gmailBody');
+
+  function formatEmailPrompt(name, subject, message) {
+    const cleanName = (name || '').trim();
+    const cleanSubject = (subject || '').trim();
+    const cleanMessage = (message || '').trim();
+
+    // 1. Subject: Use exact subject entered by user (no artificial tags)
+    const finalSubject = cleanSubject || 'Message for Sara';
+
+    // 2. Body: Use clean message as typed by user
+    let bodyText = cleanMessage;
+    if (!bodyText) {
+      bodyText = 'Hi Sara,\n\nI came across your portfolio and wanted to reach out!';
+    }
+
+    // 3. Sender name: Attach clean "- [Name]" only if provided and not already in the text
+    if (cleanName && !new RegExp('\\b' + cleanName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(bodyText)) {
+      bodyText = `${bodyText}\n\n- ${cleanName}`;
+    }
+
+    return { subject: finalSubject, body: bodyText };
+  }
 
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
       const nameInput = document.getElementById('senderName');
       const subjectInput = document.getElementById('senderSubject');
       const messageInput = document.getElementById('senderMessage');
 
-      const name = (nameInput && nameInput.value ? nameInput.value.trim() : '');
-      const subject = (subjectInput && subjectInput.value ? subjectInput.value.trim() : '');
-      const message = (messageInput && messageInput.value ? messageInput.value.trim() : '');
+      const rawName = (nameInput && nameInput.value ? nameInput.value.trim() : '');
+      const rawSubject = (subjectInput && subjectInput.value ? subjectInput.value.trim() : '');
+      const rawMessage = (messageInput && messageInput.value ? messageInput.value.trim() : '');
 
-      // Strict validation for required fields before dispatch
-      if (!name) {
-        showToast('⚠️ PLEASE ENTER SENDER NAME / ORG');
-        triggerSound('bleep');
-        if (nameInput) nameInput.focus();
-        return;
-      }
+      const formatted = formatEmailPrompt(rawName, rawSubject, rawMessage);
 
-      if (!subject) {
-        showToast('⚠️ PLEASE ENTER A QUEST SUBJECT');
-        triggerSound('bleep');
-        if (subjectInput) subjectInput.focus();
-        return;
-      }
+      // Populate hidden form inputs for native GET submission
+      if (gmailSubject) gmailSubject.value = formatted.subject;
+      if (gmailBody) gmailBody.value = formatted.body;
 
-      if (!message) {
-        showToast('⚠️ PLEASE ENTER TRANSMISSION CONTENT');
-        triggerSound('bleep');
-        if (messageInput) messageInput.focus();
-        return;
-      }
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=saradhoundiyal296@gmail.com&su=${encodeURIComponent(formatted.subject)}&body=${encodeURIComponent(formatted.body)}`;
+      const mailtoUrl = `mailto:saradhoundiyal296@gmail.com?subject=${encodeURIComponent(formatted.subject)}&body=${encodeURIComponent(formatted.body)}`;
 
-      const recipient = 'saradhoundiyal296@gmail.com';
-      const mailSubject = `Portfolio Message: ${subject} — ${name}`;
-
-      const mailBody = `Hey Sara,\r\n\r\n${name} sent you a message through your portfolio.\r\n\r\nSUBJECT: ${subject}\r\n\r\nMESSAGE\r\n────────────────────────\r\n${message}\r\n\r\n────────────────────────\r\nSent via your Portfolio Contact Terminal.`;
-
-      const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-
-      showToast('🚀 OPENING YOUR DEFAULT EMAIL CLIENT...');
-      triggerSound('powerup');
+      const isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
       // Update fallback controls
       if (transmissionStatus) transmissionStatus.classList.remove('hidden');
-      if (btnOpenMailto) btnOpenMailto.href = mailtoUrl;
       if (btnOpenGmail) btnOpenGmail.href = gmailUrl;
+      if (btnOpenMailto) btnOpenMailto.href = mailtoUrl;
       if (btnCopyDraft) {
         btnCopyDraft.onclick = () => {
-          const draftText = `To: ${recipient}\nSubject: ${mailSubject}\n\n${mailBody.replace(/\r\n/g, '\n')}`;
+          const draftText = `To: saradhoundiyal296@gmail.com\nSubject: ${formatted.subject}\n\n${formatted.body}`;
           navigator.clipboard.writeText(draftText).then(() => {
             showToast('📋 EMAIL DRAFT COPIED TO CLIPBOARD!');
             triggerSound('coin');
@@ -674,16 +674,30 @@
         };
       }
 
-      // Automatically launch default email client via mailto
-      try {
-        window.location.href = mailtoUrl;
-      } catch (err) {
-        const mailAnchor = document.createElement('a');
-        mailAnchor.href = mailtoUrl;
-        mailAnchor.style.display = 'none';
-        document.body.appendChild(mailAnchor);
-        mailAnchor.click();
-        setTimeout(() => mailAnchor.remove(), 1000);
+      triggerSound('powerup');
+
+      if (isMobile) {
+        // Mobile devices: intercept native form to trigger mobile mail/Gmail app
+        e.preventDefault();
+        showToast('📱 OPENING IN YOUR MAIL APP...');
+        if (transStatusIcon) transStatusIcon.textContent = '📱';
+        if (transStatusTitle) transStatusTitle.textContent = 'OPENING IN YOUR MAIL APP!';
+        if (transStatusSub) transStatusSub.textContent = 'If your mail app did not open automatically, choose an option below:';
+        try {
+          window.location.href = mailtoUrl;
+        } catch (err) {
+          window.location.href = gmailUrl;
+        }
+      } else {
+        // Laptop / PC / Desktop:
+        // Do NOT e.preventDefault()!
+        // The form action="https://mail.google.com/mail/" method="GET" target="_blank"
+        // natively opens a new tab in Gmail with the query parameters!
+        // This is NEVER blocked by popup blockers!
+        showToast('🔴 OPENING GMAIL COMPOSE IN NEW TAB...');
+        if (transStatusIcon) transStatusIcon.textContent = '🔴';
+        if (transStatusTitle) transStatusTitle.textContent = 'GMAIL COMPOSE OPENED IN NEW TAB!';
+        if (transStatusSub) transStatusSub.textContent = 'Your pre-filled draft has opened in Gmail. If you need to re-open it or copy the text, choose an option below:';
       }
     });
   }
