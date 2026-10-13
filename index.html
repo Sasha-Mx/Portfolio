@@ -1277,24 +1277,18 @@
           <!-- Right Column: Quick Transmission Dispatch -->
           <div class="contact-form-panel">
             <h3 class="panel-heading">TRANSMIT A MESSAGE</h3>
-            <form id="contactForm" action="https://mail.google.com/mail/" method="GET" target="_blank" class="pixel-form" novalidate>
-              <input type="hidden" name="view" value="cm">
-              <input type="hidden" name="fs" value="1">
-              <input type="hidden" name="to" value="saradhoundiyal296@gmail.com">
-              <input type="hidden" name="su" id="gmailSubject" value="">
-              <input type="hidden" name="body" id="gmailBody" value="">
-
+            <form id="contactForm" class="pixel-form">
               <div class="form-group">
                 <label for="senderName" class="form-label">SENDER NAME / ORG:</label>
-                <input type="text" id="senderName" class="pixel-input" placeholder="e.g. Tech Lead / Recruiter">
+                <input type="text" id="senderName" required class="pixel-input" placeholder="e.g. Tech Lead / Recruiter">
               </div>
               <div class="form-group">
                 <label for="senderSubject" class="form-label">QUEST SUBJECT:</label>
-                <input type="text" id="senderSubject" class="pixel-input" placeholder="e.g. Full-Stack / Software Engineering Role">
+                <input type="text" id="senderSubject" required class="pixel-input" placeholder="e.g. Full-Stack / Software Engineering Role">
               </div>
               <div class="form-group">
                 <label for="senderMessage" class="form-label">TRANSMISSION CONTENT:</label>
-                <textarea id="senderMessage" rows="4" class="pixel-input" placeholder="Write your transmission to Sara..."></textarea>
+                <textarea id="senderMessage" rows="4" required class="pixel-input" placeholder="Write your transmission to Sara..."></textarea>
               </div>
               <button type="submit" class="pixel-btn start-btn submit-btn sound-trigger" data-sound="powerup" id="sendBtn">
                 <span class="btn-border"></span>
@@ -1302,13 +1296,13 @@
               </button>
               <div id="transmissionStatus" class="transmission-status hidden" aria-live="polite">
                 <div class="trans-status-msg">
-                  <span id="transStatusIcon">🔴</span> <strong id="transStatusTitle">GMAIL COMPOSE OPENED IN NEW TAB!</strong>
+                  <span id="transStatusIcon">📡</span> <strong id="transStatusTitle">OPENING YOUR DEFAULT EMAIL CLIENT!</strong>
                 </div>
-                <p class="trans-status-sub" id="transStatusSub">Your pre-filled draft has opened in Gmail. If you need to re-open it or copy the text, choose an option below:</p>
+                <p class="trans-status-sub" id="transStatusSub">Your pre-filled email draft has been dispatched. If your default email client did not open automatically, choose an option below:</p>
                 <div class="trans-status-buttons">
-                  <a id="btnOpenGmail" href="#" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger gmail-quick-btn" data-sound="bleep">🔴 RE-OPEN IN GMAIL WEB</a>
+                  <a id="btnOpenMailto" href="#" class="pixel-btn-sm sound-trigger" data-sound="bleep">🔄 RE-OPEN EMAIL CLIENT</a>
                   <button type="button" id="btnCopyDraft" class="pixel-btn-sm sound-trigger" data-sound="coin">📋 COPY MESSAGE DRAFT</button>
-                  <a id="btnOpenMailto" href="#" class="pixel-btn-sm sound-trigger" data-sound="bleep">✉️ OPEN DEFAULT DESKTOP MAIL</a>
+                  <a id="btnOpenGmail" href="#" target="_blank" rel="noopener noreferrer" class="pixel-btn-sm sound-trigger gmail-quick-btn" data-sound="bleep">🔴 OPEN IN GMAIL WEB</a>
                 </div>
               </div>
             </form>
